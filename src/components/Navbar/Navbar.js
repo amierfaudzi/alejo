@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
         <nav>
-            This is the Navbar
+            <Link to='/'>Alejo</Link>
+            <Link to='/Resources'>Resources</Link>
         </nav>
     )
 }
