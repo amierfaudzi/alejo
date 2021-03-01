@@ -1,10 +1,21 @@
-import './App.css';
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route, 
+  Link } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Navbar from './components/Navbar/Navbar';
+
 
 function App() {
   return (
-    <div className="App">
-      Alejo
-    </div>
+    <Router>
+      <Navbar/>
+      <Switch>
+        <Route path="/" component={Home}/>
+      </Switch>
+    </Router>
+
   );
 }
 
