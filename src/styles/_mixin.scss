@@ -1,0 +1,30 @@
+// Linking dependencies
+@use './variable' as *;
+
+
+// Tablet
+@mixin tablet {
+    @media(min-width: $tablet-breakpoint){
+        @content;
+    }
+}
+
+// Desktop
+@mixin desktop {
+    @media(min-width: $desktop-breakpoint){
+        @content;
+    }
+}
+
+// Content width vw
+@mixin maximum-content-width {
+    width: 90vw;
+
+    @include tablet {
+        width: 93.75vw;
+    }
+
+    @include desktop {
+        width: 1080px;
+    }
+}

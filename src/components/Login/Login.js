@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import './Login.scss';
 
 export default function Login() {
     return (
         <div>
-            <form>
+            <form className="form">
                 <div>
                     <label htmlFor="">Name</label>
                     <input type="text" name="" id=""/>
