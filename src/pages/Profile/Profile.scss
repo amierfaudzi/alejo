@@ -3,4 +3,62 @@
 .profile {
     @include maximum-content-width;
     margin: 0 auto;
+    display: flex;
+
+    &__frame {
+        margin-right: 2rem;
+    }
+
+    &__image {
+        border-radius: 50%;
+    }
+
+    &__bio {
+        flex: 2;
+        padding-right: 2rem;
+
+        &-top {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.info-box {
+    border: 1px salmon solid;
+    border-radius: 6px;
+    width: 320px;
+    height: 180px;
+    margin-bottom: 1.5rem;
+
+    &__title {
+        display: flex;
+        align-items: center;
+        background-color: sandybrown;
+        height: 3rem;
+        padding: 0 2rem;
+    }
+
+    &__content {
+        padding: 0.5rem 2rem;
+    }
+}
+
+.extras {
+    border: 1px solid black;
+    border-radius: 6px;
+
+    &__title {
+        background-color: #ddd;
+        height: 3rem;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__content {
+        padding: 0.5rem 2rem;
+        height: 16rem;
+    }
 }
