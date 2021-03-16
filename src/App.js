@@ -4,10 +4,10 @@ import {
   Route, 
   Link } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Navbar from './components/Navbar/Navbar';
 import Resources from './pages/Resources/Resources';
 import Guides from './pages/Guides/Guides';
 import { gql, useMutation, useQuery } from '@apollo/client';
+import Header from './components/Header/Header';
 
 const USER_QUERY = gql`
 query {
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar/>
+      <Header/>
       <Switch>
         <Route path="/resources" component={Resources}/>
         <Route path="/guides" component={Guides}/>

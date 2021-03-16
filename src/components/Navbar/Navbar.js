@@ -5,9 +5,21 @@ import './Navbar.scss';
 export default function Navbar() {
     return (
         <nav className="navbar">
-            <Link className="link" to='/'>Alejo</Link>
-            <Link className="link" to='/guides'>Guides</Link>
-            <Link className="link" to='/resources'>Resources</Link>
+            <div className="navbar__left">
+                <Link className="link" to='/'>Alejo</Link>
+            </div>
+            
+            <div className="navbar__right">
+                <div className="navbar__lists">
+                    <Link className="link" to='/guides'>Guides</Link>
+                    <Link className="link" to='/resources'>Resources</Link>
+                </div>
+                <div className="navbar__auth">
+                    Sign In
+                </div>
+            </div>
+
+            
         </nav>
     )
 }

@@ -1,8 +1,25 @@
+@import '../../styles/mixin';
+@import '../../styles/variable';
+
 .navbar {
+    @include maximum-content-width;
+    height: 5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+    &__right {
+        display: flex;
+    }
+
+    &__lists {
+        display: flex;
+    }
 }
 
 .link {
     text-decoration: none;
+    margin: 0 1rem;
+    color: white;
 }
