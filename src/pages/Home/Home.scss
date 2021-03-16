@@ -1,0 +1,21 @@
+@import '../../styles/mixin';
+@import '../../styles/variable';
+
+.home {
+    @include maximum-content-width;
+    margin: 0 auto;
+    width: 100vw;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+
+    &__content {
+        margin-right: 2rem;
+
+        &-title {
+            margin-bottom: 2rem;
+        }
+    }
+}
