@@ -1,0 +1,6 @@
+@import '../../styles/mixin';
+
+.profile {
+    @include maximum-content-width;
+    margin: 0 auto;
+}

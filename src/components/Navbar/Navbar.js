@@ -11,7 +11,7 @@ export default function Navbar() {
             
             <div className="navbar__right">
                 <div className="navbar__lists">
-                    <Link className="link" to='/guides'>Guides</Link>
+                    <Link className="link" to='/profiles'>Alejos/Users</Link>
                     <Link className="link" to='/resources'>Resources</Link>
                 </div>
                 <div className="navbar__auth">

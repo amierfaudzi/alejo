@@ -6,10 +6,11 @@ import {
 import Home from './pages/Home/Home';
 import Resources from './pages/Resources/Resources';
 import Guides from './pages/Guides/Guides';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import Header from './components/Header/Header';
+import Profile from './pages/Profile/Profile';
 
-const USER_QUERY = gql`
+const USERS_QUERY = gql`
 query {
   users{
     firstName
@@ -17,34 +18,29 @@ query {
   }
 }`
 
-const exampleUser = {
-  email: "xi.bowving@mail.com",
-  password: "abc123"
-}
-
-const USER_LOGIN = gql`
-query Login($email: String! $password: String!){
-    login(loginInput: {email: $email, password: $password}){
-        token,
-        user {
-          firstName,
-          about
-        }
-    }
-}`
+// const USER_LOGIN = gql`
+// query Login($email: String! $password: String!){
+//     login(loginInput: {email: $email, password: $password}){
+//         token,
+//         user {
+//           firstName,
+//           about
+//         }
+//     }
+// }`
 
 function App() {
 
-  // const {loading, error, data} = useQuery(USER_QUERY, {});
-  const {loading, error, data} = useQuery(USER_LOGIN, {
-    variables: {
-    email: "xi.bowving@mail.com",
-    password: "abc123"
-  }});
+  // const {loading, error, data} = useQuery(USERS_QUERY, {});
+  // const {loading, error, data} = useQuery(USER_LOGIN, {
+  //   variables: {
+  //   email: "xi.bowving@mail.com",
+  //   password: "abc123"
+  // }});
 
-  if(data){
-    console.log(data.login, loading, error);
-  }
+  // if(data){
+  //   console.log(data.login, loading, error);
+  // }
 
   return (
     <Router>
@@ -52,6 +48,7 @@ function App() {
       <Switch>
         <Route path="/resources" component={Resources}/>
         <Route path="/guides" component={Guides}/>
+        <Route path="/profiles" component={Profile}/>
         {/* For any particular Guide */}
         {/* <Route path="/guides/:id" component={Guides}/> */}
         <Route path="/" component={Home}/>
