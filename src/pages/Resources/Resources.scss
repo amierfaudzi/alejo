@@ -1,0 +1,113 @@
+@import '../../styles/mixin';
+
+.resources {
+    margin: 0 auto;
+    @include maximum-content-width;
+
+    &__tray {
+        margin: 2rem 0 ;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+}
+
+.resource-card {
+    width: 240px;
+    height: 180px;
+    box-shadow: 6px 6px 10px rgba(128, 128, 128, 0.123);
+    border-radius: 8px;
+
+    &__image {
+        border-radius: 8px 8px 0 0;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.post-form {
+    margin: 0 auto;
+    width: 728px;
+    height: 10rem;
+    display: flex;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 4rem;
+
+    &__image {
+        border-radius: 50%;
+        position: absolute;
+        top: 2.5rem;
+        left: 1rem;
+    }
+
+    &__container {
+        position: absolute;
+        left: 7rem;
+        top: 1rem;
+    }
+
+    &__user {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    &::after {
+        content: "";
+        width: 100%;
+        border-bottom: 2px solid black;
+        position: absolute;
+        bottom: -2rem;
+    }
+}
+
+.form {
+    input {
+        width: 600px;
+        height: 4rem;
+        //border-radius: 4px;
+        padding: 0.5rem;
+        outline: none;
+    
+        &:focus {
+            background-color: rgba(64, 224, 208, 0.267);
+        }
+    }
+}
+
+.btn {
+    text-transform: uppercase;
+    padding: 0 1rem;
+    height: 2rem;
+    margin-top: 0.5rem;
+}
+
+.post{
+    margin: 0 auto 2rem auto;
+    height: 120px;
+    width: 728px;
+    border: solid 1px black;
+    position: relative;
+
+    &__image {
+        border-radius: 50%;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
+
+    &__content {
+        position: absolute;
+        left: 7rem;
+        top: 1rem;
+    }
+
+    &__poster {
+        font-weight: bold;
+    }
+}
