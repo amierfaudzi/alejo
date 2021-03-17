@@ -48,8 +48,6 @@ function App() {
         <Route path="/resources" component={Resources}/>
         <Route path="/users" component={Users}/>
         <Route path="/profile" component={Profile}/>
-        {/* For any particular Guide */}
-        {/* <Route path="/guides/:id" component={Guides}/> */}
         <Route path="/" component={Home}/>
       </Switch>
     </Router>

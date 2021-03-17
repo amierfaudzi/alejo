@@ -6,14 +6,6 @@ export default function UserCard() {
 
     // Will receive a user object
 
-    // const handleProfile = () => {
-    //     // will direct to the profile page
-    //     alert("Selected");
-
-    // }
-
-    // onClick={() => {handleProfile();}}
-
     return (
         <>
         <Link to={{
