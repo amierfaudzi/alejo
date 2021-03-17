@@ -15,7 +15,9 @@ query SingleUser($id: ID!){
   }
 }`
 
-export default function Profile() {
+export default function Profile(props) {
+
+    console.log(props.location.state.data)
 
     const {loading, error, data} = useQuery(SINGLE_USER_QUERY, {
         variables: {

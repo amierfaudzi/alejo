@@ -7,28 +7,3 @@
     flex-wrap: wrap;
 }
 
-.user-card {
-    height: 300px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    margin: 0 2rem 2rem 0;
-
-    border: 1px solid black;
-    border-radius: 6px;
-
-    &__image {
-        display: block;
-        border: 6px 6px 0 0;
-    }
-
-    &__info {
-        background-color: turquoise;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 2rem;
-        border: 0 0 6px 6px;
-    }
-}
