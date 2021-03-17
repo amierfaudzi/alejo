@@ -5,18 +5,17 @@ import {
   Link } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Resources from './pages/Resources/Resources';
-import Guides from './pages/Guides/Guides';
-import { gql, useQuery } from '@apollo/client';
 import Header from './components/Header/Header';
 import Profile from './pages/Profile/Profile';
+import Users from './pages/Users/Users';
 
-const USERS_QUERY = gql`
-query {
-  users{
-    firstName
-    lastName
-  }
-}`
+// const USERS_QUERY = gql`
+// query {
+//   users{
+//     firstName
+//     lastName
+//   }
+// }`
 
 // const USER_LOGIN = gql`
 // query Login($email: String! $password: String!){
@@ -47,8 +46,8 @@ function App() {
       <Header/>
       <Switch>
         <Route path="/resources" component={Resources}/>
-        <Route path="/guides" component={Guides}/>
-        <Route path="/profiles" component={Profile}/>
+        <Route path="/users" component={Users}/>
+        <Route path="/profile" component={Profile}/>
         {/* For any particular Guide */}
         {/* <Route path="/guides/:id" component={Guides}/> */}
         <Route path="/" component={Home}/>
