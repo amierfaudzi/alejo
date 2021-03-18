@@ -8,6 +8,8 @@ import Resources from './pages/Resources/Resources';
 import Header from './components/Header/Header';
 import Profile from './pages/Profile/Profile';
 import Users from './pages/Users/Users';
+import Login from './pages/Login/Login';
+import { gql, useQuery } from '@apollo/client';
 
 // const USERS_QUERY = gql`
 // query {
@@ -30,7 +32,7 @@ import Users from './pages/Users/Users';
 
 function App() {
 
-  // const {loading, error, data} = useQuery(USERS_QUERY, {});
+  // // const {loading, error, data} = useQuery(USERS_QUERY, {});
   // const {loading, error, data} = useQuery(USER_LOGIN, {
   //   variables: {
   //   email: "xi.bowving@mail.com",
@@ -48,6 +50,7 @@ function App() {
         <Route path="/resources" component={Resources}/>
         <Route path="/users" component={Users}/>
         <Route path="/profile" component={Profile}/>
+        <Route path="/login" component={Login}/>
         <Route path="/" component={Home}/>
       </Switch>
     </Router>

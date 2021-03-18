@@ -1,0 +1,6 @@
+@import '../../styles/mixin';
+
+.login {
+    @include maximum-content-width;
+    margin: 0 auto;
+}

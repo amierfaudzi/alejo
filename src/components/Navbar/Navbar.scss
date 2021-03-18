@@ -16,6 +16,11 @@
     &__lists {
         display: flex;
     }
+
+    &__auth {
+        padding: 0 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .link {

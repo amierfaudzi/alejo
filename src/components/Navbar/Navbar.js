@@ -15,7 +15,8 @@ export default function Navbar() {
                     <Link className="link" to='/resources'>Resources</Link>
                 </div>
                 <div className="navbar__auth">
-                    Sign In
+                <Link className="link" to='/login'><button className="navbar__auth">Sign In</button></Link>
+                <Link className="link" to='/users'><button className="navbar__auth">Sign Up</button></Link>
                 </div>
             </div>
 
