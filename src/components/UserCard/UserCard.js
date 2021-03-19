@@ -18,7 +18,7 @@ export default function UserCard() {
                 <div className="user-card__main">
                     <img src="http://placekitten.com/300/200" alt="" className="user-card__image"/>
                     <div className="user-card__info">
-                        <h2>John Doe</h2>
+                        <h2>Sabrina Doe</h2>
                         <h3>Toronto, Ontario</h3>
                     </div>
                 </div>

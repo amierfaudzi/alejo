@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Login.scss';
-import { gql, useLazyQuery } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router';
 
 const USER_LOGIN = gql`
-query Login($email: String! $password: String!){
+mutation Login($email: String! $password: String!){
     login(loginInput: {email: $email, password: $password}){
-        token,
-        user {
-          firstName,
-          about
-        }
+        token
     }
 }`
 
@@ -24,15 +20,17 @@ export default function Login() {
 
     const history = useHistory();
 
-    const [ loginUser, { loading, data }] = useLazyQuery(USER_LOGIN);
+    const [login] = useMutation(USER_LOGIN, {variables: {
+        email: state.email,
+        password: state.password
+    }, onCompleted: (data)=> {
+        console.log(data)
+    }});
 
-    useEffect(()=>{
-
-        if(data){
-            localStorage.setItem("AUTH_TOKEN", data.token)
-            history.push('/users')
-        }
-    }, [data])
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     login;
+    // }
 
     // add token to the local storage
     return (
@@ -53,16 +51,9 @@ export default function Login() {
                             setState({...state, password: event.target.value})
                         }}/>
                     </div>
-                    <button onClick={async (event) => {
-                        event.preventDefault();
-                        const res = await loginUser({variables: {
-                            email: state.email,
-                            password: state.password
-                        }})
-                    }
-                    }
-                    >Sign In</button>
                 </form>
+                <button onClick={login}
+                    >Sign In</button>
             </div>
         </div>
     )

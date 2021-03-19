@@ -11,13 +11,12 @@ import Users from './pages/Users/Users';
 import Login from './pages/Login/Login';
 import { gql, useQuery } from '@apollo/client';
 
-// const USERS_QUERY = gql`
-// query {
-//   users{
-//     firstName
-//     lastName
-//   }
-// }`
+const USERS_QUERY = gql`
+query {
+  users{
+    firstName
+  }
+}`
 
 // const USER_LOGIN = gql`
 // query Login($email: String! $password: String!){
@@ -32,16 +31,16 @@ import { gql, useQuery } from '@apollo/client';
 
 function App() {
 
-  // // const {loading, error, data} = useQuery(USERS_QUERY, {});
+  const {loading, error, data} = useQuery(USERS_QUERY, {});
   // const {loading, error, data} = useQuery(USER_LOGIN, {
   //   variables: {
   //   email: "xi.bowving@mail.com",
   //   password: "abc123"
   // }});
 
-  // if(data){
-  //   console.log(data.login, loading, error);
-  // }
+  if(data){
+    console.log(data, loading, error);
+  }
 
   return (
     <Router>
