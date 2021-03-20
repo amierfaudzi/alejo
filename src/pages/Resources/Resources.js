@@ -2,6 +2,7 @@ import React from 'react';
 import './Resources.scss';
 import { gql, useQuery } from '@apollo/client';
 import Post from '../../components/Post/Post';
+import PostForm from '../../components/PostForm/PostForm';
 
 const QUESTIONS_QUERY = gql`
     query {
@@ -53,19 +54,7 @@ export default function Resources() {
                 </div>
             </div>
             <div>
-                <div className="post-form">
-                    <img src="http://placekitten.com/80/80" alt="" className="post-form__image"/>
-                    <div className="post-form__container">
-                        <p className="post-form__user">Oluwakemi Adeleke</p>
-                        <form className='form'>
-                            <div>
-                                <label htmlFor="form-content"></label>
-                                <input type="text" placeholder="Ask a question or share a post" id="form-content"/>
-                            </div>
-                            <button className="btn" type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
+                <PostForm/>
                 <div className="community-post">
                     {data ? 
                         data.allQuestions.map(data => {

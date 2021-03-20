@@ -45,7 +45,7 @@ export default function Login() {
         <div className="login">
             <div className="sign-in">
                 <h1>Alejo</h1>
-                <form>
+                <div>
                     <h4>Sign in</h4>
                     <div>
                         <label htmlFor=""></label>
@@ -59,7 +59,7 @@ export default function Login() {
                             setState({...state, password: event.target.value})
                         }}/>
                     </div>
-                </form>
+                </div>
                 <button onClick={login}
                     >Sign In</button>
             </div>
