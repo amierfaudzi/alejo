@@ -59,7 +59,7 @@ export default function Resources() {
                     {data ? 
                         data.allQuestions.map(data => {
                             return (
-                                <Post post={data}/>
+                                <Post key={data._id} post={data}/>
                             )
                         })
                     : "Be the first to initiate the conversation"}

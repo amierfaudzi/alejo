@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
 
@@ -6,7 +6,9 @@ const token = localStorage.getItem("AUTH_TOKEN")
 
 export default function Navbar() {
 
-    console.log(token)
+    useEffect(()=>{
+        console.log(token)
+    })
     
     return (
         <nav className="navbar">
