@@ -1,7 +1,26 @@
 import React from 'react';
 import './Resources.scss';
+import { gql, useQuery } from '@apollo/client';
+import Post from '../../components/Post/Post';
+
+const QUESTIONS_QUERY = gql`
+    query {
+        allQuestions {
+            content,
+            _id,
+            date
+        }
+    }
+`
 
 export default function Resources() {
+
+    const {loading, error, data} = useQuery(QUESTIONS_QUERY);
+
+    if(data){
+        console.log(data, loading, error);
+    }
+
     return (
         <div className="resources">
             <div className="welcome">
@@ -48,27 +67,13 @@ export default function Resources() {
                     </div>
                 </div>
                 <div className="community-post">
-                    <div className="post">
-                        <img src="http://placekitten.com/80/80" alt="" className="post__image"/>
-                        <div className="post__content">
-                            <p className="post__poster">Amier Faudzi</p>
-                            <p>Where is the best boba place in Montreal?</p>
-                        </div>
-                    </div>
-                    <div className="post">
-                        <img src="http://placekitten.com/80/80" alt="" className="post__image"/>
-                        <div className="post__content">
-                            <p className="post__poster">Amier Faudzi</p>
-                            <p>Where is the best boba place in Montreal?</p>
-                        </div>
-                    </div>
-                    <div className="post">
-                        <img src="http://placekitten.com/80/80" alt="" className="post__image"/>
-                        <div className="post__content">
-                            <p className="post__poster">Amier Faudzi</p>
-                            <p>Where is the best boba place in Montreal?</p>
-                        </div>
-                    </div>
+                    {data ? 
+                        data.allQuestions.map(data => {
+                            return (
+                                <Post post={data}/>
+                            )
+                        })
+                    : "Be the first to initiate the conversation"}
                 </div>
             </div>
         </div>

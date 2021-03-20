@@ -6,7 +6,13 @@ import { useHistory } from 'react-router';
 const USER_LOGIN = gql`
 mutation Login($email: String! $password: String!){
     login(loginInput: {email: $email, password: $password}){
-        token
+        token,
+        user {
+            _id,
+            firstName,
+            lastName,
+            email
+        }
     }
 }`
 
@@ -25,14 +31,16 @@ export default function Login() {
         password: state.password
     }, onCompleted: (data)=> {
         console.log(data)
+        history.push({
+            pathname:'/profile',
+            state: {
+                data: data
+            }
+        })
     }});
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     login;
-    // }
-
     // add token to the local storage
+
     return (
         <div className="login">
             <div className="sign-in">
