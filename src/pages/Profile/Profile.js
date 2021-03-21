@@ -2,9 +2,14 @@ import React from 'react';
 import './Profile.scss';
 import { gql, useQuery } from '@apollo/client';
 
+
 const USERINFO_QUERY = gql`
-query SingleUser($creatorId: ID!){
-  userInfo(creatorId: $creatorId){
+query SuperUser($id: ID!){
+  superUser(id: $id){
+    email,
+    firstName,
+    lastName,
+    guide,
     about,
     location,
     expertise,
@@ -13,38 +18,37 @@ query SingleUser($creatorId: ID!){
   }
 }`
 
-
 export default function Profile(props) {
     
+    let userId = props.location.state.data?.login.user._id || props.location.state.userId;
     let user;
-    if(props.location.state){
-        console.log(props.location.state.data.login)
-        user = props.location.state.data.login.user;
-    }
-
     const {loading, error, data} = useQuery(USERINFO_QUERY, {
         variables: {
-        creatorId: props.location.state.data.login.user._id
+        id: userId
     }});
 
     if(data){
         console.log(data, loading, error);
+        user = data.superUser;
+        console.log(user)
+
     }
     
     return (
         <div className="profile">
-            <div className="profile__bio">
+            "Hello World"
+            {/* <div className="profile__bio">
                 <div className="profile__bio-top">
                     <div className="profile__frame">
                         <img className="profile__image" src="http://placekitten.com/250/250" alt=""/>
                     </div>
                     <div>
-                        {!user ? "Loading"
+                        {loading ? "Loading"
                         :
                         <>
                         <h2>{user.firstName + " " + user.lastName}</h2>
                         <h3>{user.email}</h3>
-                        {loading ? "Loading location" : data.userInfo.location}
+                        {loading ? "Loading location" : user.location}
                         </>
                         }
 
@@ -55,7 +59,7 @@ export default function Profile(props) {
                         About
                     </div>
                     <div className="extras__content">
-                    {loading ? "Loading" : data.userInfo.about}
+                    {loading ? "Loading" : user.about}
                     </div>
                 </div>
             </div>
@@ -65,7 +69,7 @@ export default function Profile(props) {
                         <h3>Expertise</h3>
                     </div>
                     <div className="info-box__content">
-                        {loading ? "Loading" : data.userInfo.expertise}
+                        {loading ? "Loading" : user.expertise}
                     </div>
                 </div>
                 <div className="info-box">
@@ -73,7 +77,7 @@ export default function Profile(props) {
                         <h3>Calendly Link</h3>
                     </div>
                     <div className="info-box__content">
-                        {loading ? "Loading" : data.userInfo.calendly}
+                        {loading ? "Loading" : user.calendly}
                     </div>
                 </div>
                 <div className="info-box">
@@ -81,10 +85,10 @@ export default function Profile(props) {
                         <h3>Quote</h3>
                     </div>
                     <div className="info-box__content">
-                        {loading ? "Loading" : data.userInfo.quote}
+                        {loading ? "Loading" : user.quote}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

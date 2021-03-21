@@ -18,14 +18,18 @@ export default function Navbar({token}) {
                     <Link className="link" to='/resources'>Resources</Link>
                 </div>
                 <div className="navbar__auth">
-                {(!token) ?
+                {(!token.token) ?
                 <>                 
                 <Link className="link" to='/login'><button className="navbar__auth">Sign In</button></Link>
                 <Link className="link" to='/users'><button className="navbar__auth">Sign Up</button></Link>
                 </>
-                : "User x"
+                : <Link className="link" to={{
+                    pathname:'/profile',
+                    state:{
+                        userId: token.user._id
+                    }
+                    }} >User X</Link> 
                 }
-
                 </div>
             </div>
 

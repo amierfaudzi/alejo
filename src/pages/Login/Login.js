@@ -30,10 +30,11 @@ export default function Login({setToken}) {
         email: state.email,
         password: state.password
     }, onCompleted: (data)=> {
-        setToken(data.login.token);
+        setToken(data.login);
+        console.log(data.login)
         localStorage.setItem("AUTH_TOKEN", data.login.token)
         history.push({
-            pathname:'/profile',
+            pathname:`/profile`,
             state: {
                 data: data
             }
