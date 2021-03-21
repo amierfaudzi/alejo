@@ -4,7 +4,7 @@ import { gql, useQuery } from '@apollo/client';
 import Post from '../../components/Post/Post';
 import PostForm from '../../components/PostForm/PostForm';
 
-const QUESTIONS_QUERY = gql`
+export const QUESTIONS_QUERY = gql`
     query {
         allQuestions {
             content,
@@ -12,7 +12,7 @@ const QUESTIONS_QUERY = gql`
             date
         }
     }
-`
+`;
 
 export default function Resources() {
 
@@ -62,7 +62,7 @@ export default function Resources() {
                                 <Post key={data._id} post={data}/>
                             )
                         })
-                    : "Be the first to initiate the conversation"}
+                    : "Loading..."}
                 </div>
             </div>
         </div>

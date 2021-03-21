@@ -17,11 +17,8 @@ export default function Post({post}) {
 
 
 function timeConverter (timeStamp) {
-
     const date = new Date(timeStamp);
-    console.log(date)
     //changing the date into a DD/MM/YR format
     const formattedTime = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
-
     return formattedTime;
 }

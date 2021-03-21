@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './PostForm.scss';
 import { gql, useMutation } from '@apollo/client';
+import { QUESTIONS_QUERY } from '../../pages/Resources/Resources';
 
 const ADD_QUESTION = gql`
     mutation AddQuestion($content: String!){
@@ -16,6 +17,10 @@ export default function PostForm() {
 
     const [newQuestion] = useMutation(ADD_QUESTION, { variables: {
         content: question
+    }, refetchQueries: [
+        {query: QUESTIONS_QUERY}
+    ], onCompleted: ()=>{
+        setQuestion('')
     }})
 
     return (
