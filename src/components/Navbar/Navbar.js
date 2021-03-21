@@ -4,12 +4,8 @@ import './Navbar.scss';
 
 const token = localStorage.getItem("AUTH_TOKEN")
 
-export default function Navbar() {
+export default function Navbar({token}) {
 
-    useEffect(()=>{
-        console.log(token)
-    })
-    
     return (
         <nav className="navbar">
             <div className="navbar__left">

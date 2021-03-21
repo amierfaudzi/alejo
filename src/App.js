@@ -12,16 +12,16 @@ import { useState } from 'react';
 
 function App() {
 
-  const [user, setUser] = useState('');
+  const [token, setToken] = useState('');
 
   return (
     <Router>
-      <Header/>
+      <Header token={token}/>
       <Switch>
         <Route path="/resources" component={Resources}/>
         <Route path="/users" component={Users}/>
         <Route path="/profile" component={Profile}/>
-        <Route path="/login" component={Login}/>
+        <Route path="/login" render={() => <Login setToken={setToken} />}/>
         <Route path="/" component={Home}/>
       </Switch>
     </Router>

@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import './Header.scss';
 
-export default function Header() {
+export default function Header({token}) {
     return (
         <header>
-            <Navbar/>
+            <Navbar token={token}/>
         </header>
     )
 }

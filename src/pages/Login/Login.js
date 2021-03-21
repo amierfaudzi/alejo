@@ -16,7 +16,7 @@ mutation Login($email: String! $password: String!){
     }
 }`
 
-export default function Login() {
+export default function Login({setToken}) {
 
     // create a controlled form
     const [state, setState] = useState({
@@ -30,7 +30,7 @@ export default function Login() {
         email: state.email,
         password: state.password
     }, onCompleted: (data)=> {
-        console.log(data)
+        setToken(data.login.token);
         localStorage.setItem("AUTH_TOKEN", data.login.token)
         history.push({
             pathname:'/profile',
