@@ -3,6 +3,7 @@ import './Resources.scss';
 import { gql, useQuery } from '@apollo/client';
 import Post from '../../components/Post/Post';
 import PostForm from '../../components/PostForm/PostForm';
+import Loading from '../../assets/icons/loading.gif'
 
 export const QUESTIONS_QUERY = gql`
     query {
@@ -16,10 +17,17 @@ export const QUESTIONS_QUERY = gql`
 
 export default function Resources() {
 
-    const {loading, error, data} = useQuery(QUESTIONS_QUERY);
+    let {loading, error, data} = useQuery(QUESTIONS_QUERY);
+    let sortedData = []
 
     if(data){
         console.log(data, loading, error);
+        data.allQuestions.map(data => {
+            sortedData.push(data)
+        })
+
+        sortedData.sort((a,b) => b.date-a.date);
+        console.log(sortedData);
     }
 
     return (
@@ -52,17 +60,18 @@ export default function Resources() {
                         <p>Find Jobs</p>
                     </div>
                 </div>
+                
             </div>
             <div>
                 <PostForm/>
                 <div className="community-post">
-                    {data ? 
-                        data.allQuestions.map(data => {
+                    {!loading ? 
+                        sortedData.map(data => {
                             return (
                                 <Post key={data._id} post={data}/>
                             )
                         })
-                    : "Loading..."}
+                    : <img src={Loading} alt=""/>}
                 </div>
             </div>
         </div>

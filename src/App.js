@@ -1,46 +1,18 @@
 import { 
   BrowserRouter as Router, 
   Switch, 
-  Route, 
-  Link } from 'react-router-dom';
+  Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Resources from './pages/Resources/Resources';
 import Header from './components/Header/Header';
 import Profile from './pages/Profile/Profile';
 import Users from './pages/Users/Users';
 import Login from './pages/Login/Login';
-import { gql, useQuery } from '@apollo/client';
-
-const USERS_QUERY = gql`
-query {
-  users{
-    firstName
-  }
-}`
-
-// const USER_LOGIN = gql`
-// query Login($email: String! $password: String!){
-//     login(loginInput: {email: $email, password: $password}){
-//         token,
-//         user {
-//           firstName,
-//           about
-//         }
-//     }
-// }`
+import { useState } from 'react';
 
 function App() {
 
-  const {loading, error, data} = useQuery(USERS_QUERY, {});
-  // const {loading, error, data} = useQuery(USER_LOGIN, {
-  //   variables: {
-  //   email: "xi.bowving@mail.com",
-  //   password: "abc123"
-  // }});
-
-  if(data){
-    console.log(data, loading, error);
-  }
+  const [user, setUser] = useState('');
 
   return (
     <Router>
