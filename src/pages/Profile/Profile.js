@@ -36,8 +36,7 @@ export default function Profile(props) {
     
     return (
         <div className="profile">
-            "Hello World"
-            {/* <div className="profile__bio">
+            <div className="profile__bio">
                 <div className="profile__bio-top">
                     <div className="profile__frame">
                         <img className="profile__image" src="http://placekitten.com/250/250" alt=""/>
@@ -88,7 +87,7 @@ export default function Profile(props) {
                         {loading ? "Loading" : user.quote}
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
