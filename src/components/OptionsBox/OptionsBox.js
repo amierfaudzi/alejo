@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './OptionsBox.scss';
 import {ReactComponent as Plus} from '../../assets/icons/add.svg'
 
-export default function OptionsBox() {
+export default function OptionsBox({setAdditionalInfoState, additionalInfoState}) {
 
     const [other, setOther] = useState('');
     const [ list, setList] = useState(["Job", "Vacation", "Immigration"])
@@ -17,6 +17,7 @@ export default function OptionsBox() {
                             let newList = [...list];
                             let oldList = chosen.filter(listItem => listItem !== item)
                             newList.push(item)
+                            setAdditionalInfoState({...additionalInfoState, expertise: oldList});
                             setList(newList);
                             setChosen(oldList);
                         }}>
@@ -47,6 +48,7 @@ export default function OptionsBox() {
                         let newList = [...chosen]
                         newList.push(newItem)
                         setChosen(newList);
+                        setAdditionalInfoState({...additionalInfoState, expertise: newList});
                         setOther('');
                     } else {
                         alert("Please fill in the option!")

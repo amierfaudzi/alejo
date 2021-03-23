@@ -31,7 +31,7 @@ export default function Resources() {
     }
 
     return (
-        <div className="resources">
+        <div className="resources"> 
             <div className="welcome">
                 <h1>Welcome, Oluwakemi</h1>
             </div>

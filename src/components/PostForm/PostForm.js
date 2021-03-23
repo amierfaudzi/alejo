@@ -10,7 +10,7 @@ const ADD_QUESTION = gql`
         }
     }
 `
-
+ 
 export default function PostForm({setToken}) {
 
     const [question, setQuestion] = useState('')

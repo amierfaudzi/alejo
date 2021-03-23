@@ -1,44 +1,109 @@
 import React, { useState } from 'react';
 import OptionsBox from '../OptionsBox/OptionsBox';
 import './AdditionalInfo.scss';
+import { gql, useMutation } from '@apollo/client';
+
+const ADDITIONAL_INFO = gql`
+    mutation AddUserInfo(
+        $about: String, 
+        $guide: Boolean, 
+        $location: String, 
+        $calendly: String,
+        $quote: String,
+        $expertise: [String]){
+        addUserInfo(userInfoInput: {
+            about: $about, 
+            guide: $guide, 
+            location: $location, 
+            calendly: $calendly,
+            quote: $quote,
+            expertise: $expertise
+        })
+    }
+`
 
 export default function AdditionalInfo() {
 
     const [guide, setGuide] = useState(false);
+    const [ additionalInfoState, setAdditionalInfoState] = useState({
+        about: '',
+        expertise: [],
+        location: '',
+        calendly: '',
+        quote: '',
+        guide: false
+    });
+
+    const [addUserInfo, { loading, error} ] = useMutation(ADDITIONAL_INFO, {
+        variables: {
+            about: additionalInfoState.about,
+            expertise: additionalInfoState.expertise,
+            location: additionalInfoState.location,
+            calendly: additionalInfoState.calendly,
+            quote: additionalInfoState.quote,
+            guide: additionalInfoState.guide
+        }
+    })
 
     return (
         <div className="additional-info">
-            <div>
+            <div className="additional-info__header">
                 <h1>Welcome to Alejo </h1>
                 <p>Kindly create your profile to complete your registration</p>
             </div>
-            <div>
-                <label htmlFor="">Enter your bio</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+            <div className="form">
+                <h2 className="form__title">Enter your bio</h2>
+                <textarea name="" id="" cols="30" rows="10" value={additionalInfoState.about} onChange={(event)=>{
+                    setAdditionalInfoState({...additionalInfoState, about: event.target.value})
+                }}></textarea>
             </div>
-            <div>
-                <label htmlFor="">Location</label>
-                <input type="text" placeholder="Enter your location"/>
-            </div>
-            <div>
-                <label htmlFor="">Do you wish to be a guide?</label>
-                <input type="checkbox" name="" id="" onChange={()=> {
-                    setGuide(!guide)
+            <div className="form">
+                <h2 className="form__title">Location</h2>
+                <input type="text" placeholder="Enter your location" value={additionalInfoState.location} onChange={(event)=>{
+                    setAdditionalInfoState({...additionalInfoState, location: event.target.value})
                 }}/>
             </div>
+
+            <div className="form">
+                <h2 className="form__title">Whats a fun quote/saying that you like</h2>
+                <input type="text" placeholder="To be or not to be do be do be" value={additionalInfoState.quote} onChange={(event)=>{
+                    setAdditionalInfoState({...additionalInfoState, quote: event.target.value})
+                }}/>
+            </div>
+
             
-            <OptionsBox/>
+            <div className="form">
+                <h2 className="form__title">Kindly select your area of interest</h2>
+                <OptionsBox setAdditionalInfoState={setAdditionalInfoState} additionalInfoState={additionalInfoState}/>
+            </div>
             
+            <div className="form form--guide">
+                <h2 className="form__title">Do you wish to be a guide?</h2>
+                <label className="switch">
+                        <input type="checkbox" onChange={()=> {
+                            let currentGuide = !guide;
+                            setAdditionalInfoState({...additionalInfoState, guide: currentGuide})
+                            setGuide(!guide)
+                        }}/>
+                        <span className="slider round"></span>
+                </label>
+
+            </div>
             { guide ? 
                 <>
-                    <div>
-                       <label htmlFor="">Enter your calendly link</label>
-                       <input type="text" placeholder="calendly/johndoe"/>
+                    <div className="form">
+                       <h2 className="form__title">Enter your calendly link</h2>
+                       <input type="text" placeholder="calendly/johndoe" value={additionalInfoState.calendly} onChange={(event)=>{
+                    setAdditionalInfoState({...additionalInfoState, calendly: event.target.value})
+                }}/>
                    </div>
                 </>
             :
-                   ''}
-
+            ''}
+            <div>
+                <button>Skip for now</button>
+                <button onClick={()=> console.log(additionalInfoState)}>Submit</button>
+            </div>
         </div>
     )
 }
