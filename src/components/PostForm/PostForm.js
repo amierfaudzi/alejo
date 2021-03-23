@@ -11,7 +11,7 @@ const ADD_QUESTION = gql`
     }
 `
 
-export default function PostForm() {
+export default function PostForm({setToken}) {
 
     const [question, setQuestion] = useState('')
 
@@ -19,8 +19,10 @@ export default function PostForm() {
         content: question
     }, refetchQueries: [
         {query: QUESTIONS_QUERY}
-    ], onCompleted: ()=>{
-        setQuestion('')
+    ], onCompleted: (data)=>{
+        setQuestion('');
+        setToken(data.signup);
+        localStorage.setItem("AUTH_TOKEN", data.signup.token);
     }})
 
     return (
@@ -31,7 +33,7 @@ export default function PostForm() {
                 <div>
                     <div>
                         <label htmlFor="form-content"></label>
-                        <input type="text" placeholder="Ask a question or share a post" id="form-content" value={question} onChange={(event)=>{
+                        <input className="post-form__input" type="text" placeholder="Ask a question or share a post" id="form-content" value={question} onChange={(event)=>{
                             setQuestion(event.target.value)}}/>
                     </div>
                     <button className="btn" onClick={newQuestion}>Submit</button>

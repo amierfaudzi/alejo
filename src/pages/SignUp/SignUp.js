@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SignUp.scss';
 import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router';
+import Loading from '../../assets/icons/loading.gif'
 
 const USER_SIGNUP = gql`
     mutation SignUp($firstName: String!, $lastName: String!, $email: String!, $password: String){
@@ -27,7 +28,7 @@ export default function SignUp() {
 
     const history = useHistory();
 
-    const [signup] = useMutation(USER_SIGNUP, { variables: {
+    const [signup,  { loading, error }] = useMutation(USER_SIGNUP, { variables: {
         password: state.password,
         email: state.email,
         firstName: state.firstName,
@@ -51,6 +52,8 @@ export default function SignUp() {
                 <h1>Alejo</h1>
                 <div>
                     <h4>Sign Up</h4>
+                    {!loading ? 
+                    <>
                     <div>
                         <label htmlFor=""></label>
                         <input type="text" placeholder="First name" value={state.firstName} onChange={(event)=> {
@@ -83,6 +86,11 @@ export default function SignUp() {
                             alert("Password does not match")
                         }
                     }}>Sign Up</button>
+                
+                    </>
+                    :
+                    <img src={Loading} alt=""/>
+                    }
                 </div>
             </div>
         </div>

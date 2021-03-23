@@ -1,0 +1,41 @@
+.post-form {
+    margin: 0 auto;
+    width: 728px;
+    height: 10rem;
+    display: flex;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 4rem;
+
+    &__input {
+        width: 600px;
+        padding: 0.5rem;
+    }
+
+    &__image {
+        border-radius: 50%;
+        position: absolute;
+        top: 2.5rem;
+        left: 1rem;
+    }
+
+    &__container {
+        position: absolute;
+        left: 7rem;
+        top: 1rem;
+    }
+
+    &__user {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    &::after {
+        content: "";
+        width: 100%;
+        border-bottom: 2px solid black;
+        position: absolute;
+        bottom: -2rem;
+    }
+}
