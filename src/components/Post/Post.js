@@ -1,7 +1,10 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import './Post.scss';
 
 export default function Post({post}) {
+
+    const history = useHistory();
 
     return (
         <div className="post">
@@ -10,6 +13,9 @@ export default function Post({post}) {
                 <p className="post__poster">Amier Faudzi</p>
                 <p>{post.content}</p>
                 <p>{timeConverter(Number(post.date))}</p>
+                <button onClick={()=>{
+                    history.push('/thread');
+                }}>View thread</button>
             </div>
         </div>
     )

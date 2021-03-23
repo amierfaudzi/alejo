@@ -10,6 +10,7 @@ import Users from './pages/Users/Users';
 import Login from './pages/Login/Login';
 import { useState } from 'react';
 import SignUp from './pages/SignUp/SignUp';
+import Thread from './pages/Thread/Thread';
 
 function App() {
 
@@ -19,11 +20,12 @@ function App() {
     <Router>
       <Header token={token} setToken={setToken}/>
       <Switch>
-        <Route path="/resources" component={Resources}/>
+        <Route path="/resources" render={() => <Resources token={token} />}/>
         <Route path="/users" component={Users}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/login" render={() => <Login setToken={setToken} />}/>
-        <Route path="/signup" render={() => <SignUp setToken={setToken} />}/>
+        <Route path="/signup" render={() => <SignUp setToken={setToken} />}/>\
+        <Route path="/thread" render={() => <Thread/>}/>
         <Route path="/" component={Home}/>
       </Switch>
     </Router>

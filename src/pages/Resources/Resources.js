@@ -15,7 +15,7 @@ export const QUESTIONS_QUERY = gql`
     }
 `;
 
-export default function Resources() {
+export default function Resources({token}) {
 
     let {loading, error, data} = useQuery(QUESTIONS_QUERY);
     let sortedData = []
@@ -33,7 +33,11 @@ export default function Resources() {
     return (
         <div className="resources"> 
             <div className="welcome">
-                <h1>Welcome, Oluwakemi</h1>
+                {token ? 
+                <h1>Welcome, {token.user.firstName}</h1>
+                :
+                ''}
+                
             </div>
             <div className="resources__tray">
                 <div className="resource-card">
@@ -63,10 +67,16 @@ export default function Resources() {
                 
             </div>
             <div>
+                {token ? 
                 <PostForm/>
+                :
+                ''
+                }
+                
                 <div className="community-post">
                     {!loading ? 
                         sortedData.map(data => {
+                            console.log(data)
                             return (
                                 <Post key={data._id} post={data}/>
                             )
