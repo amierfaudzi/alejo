@@ -35,7 +35,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
 }
 
 .home-card {
@@ -49,4 +49,18 @@
     align-items: center;
     padding: 0.5rem;
     text-align: center;
+}
+
+.additionalInfo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__content {
+        margin-left: 2rem;
+    }
 }

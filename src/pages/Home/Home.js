@@ -37,16 +37,17 @@ export default function Home() {
                         <p>Alejo gives you a chance to get to know Canada and have the fun you deserve.</p>
                     </div>
                 </div>
-                <div>
+            </div>
+
+            <div className="additionalInfo">
                     <div>
                         <img src="http://placekitten.com/400/400" alt=""/>
                     </div>
-                    <div>
-                        <h2>In a land of opportunities, you need the right directions</h2>
-                        <h3>Alejo is your one source for job lisitngs, homes, holiday destinations and also professional guides who will be ready to assist you in settling in and finding the right jobs and homes for your stay. We will also give you guides to everything you need.</h3>
+                    <div className="additionalInfo__content">
+                        <h2 className="additionalInfo__title">In a land of opportunities, you need the right directions</h2>
+                        <p>Alejo is your one source for job lisitngs, homes, holiday destinations and also professional guides who will be ready to assist you in settling in and finding the right jobs and homes for your stay. We will also give you guides to everything you need.</p>
                         <button>Join community</button>
                     </div>
-                </div>
             </div>
 
         </div>

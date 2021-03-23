@@ -9,6 +9,7 @@ import Profile from './pages/Profile/Profile';
 import Users from './pages/Users/Users';
 import Login from './pages/Login/Login';
 import { useState } from 'react';
+import SignUp from './pages/SignUp/SignUp';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/users" component={Users}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/login" render={() => <Login setToken={setToken} />}/>
+        <Route path="/signup" render={() => <SignUp setToken={setToken} />}/>
         <Route path="/" component={Home}/>
       </Switch>
     </Router>
