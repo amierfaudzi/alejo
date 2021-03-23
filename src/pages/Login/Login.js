@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.scss';
 import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router';
+import Loading from '../../assets/icons/loading.gif'
 
 const USER_LOGIN = gql`
 mutation Login($email: String! $password: String!){
@@ -26,7 +27,7 @@ export default function Login({setToken}) {
 
     const history = useHistory();
 
-    const [login] = useMutation(USER_LOGIN, {variables: {
+    const [login, { loading, error }] = useMutation(USER_LOGIN, {variables: {
         email: state.email,
         password: state.password
     }, onCompleted: (data)=> {
@@ -39,16 +40,18 @@ export default function Login({setToken}) {
                 data: data
             }
         })
-    }});
+    }, onError: () => {alert(error)}});
 
     // add token to the local storage
 
     return (
         <div className="login">
             <div className="sign-in">
-                <h1>Alejo</h1>
                 <div>
                     <h4>Sign in</h4>
+                <h1>Alejo</h1>
+                {!loading ? 
+                <>
                     <div>
                         <label htmlFor=""></label>
                         <input type="text" name="email" id="email" placeholder="email" value={state.email} onChange={(event)=> {
@@ -61,9 +64,13 @@ export default function Login({setToken}) {
                             setState({...state, password: event.target.value})
                         }}/>
                     </div>
-                </div>
                 <button onClick={login}
                     >Sign In</button>
+                    </>
+                    :
+                    <img src={Loading} alt=""/>
+                    }
+                </div>
             </div>
         </div>
     )

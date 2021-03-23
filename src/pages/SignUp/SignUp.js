@@ -44,7 +44,7 @@ export default function SignUp() {
             lastName: ''
         })
 
-    }})
+    },  onError: () => {alert(error)}})
 
     return (
         <div className="signup">
