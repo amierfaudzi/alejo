@@ -17,7 +17,7 @@ function App() {
 
   return (
     <Router>
-      <Header token={token}/>
+      <Header token={token} setToken={setToken}/>
       <Switch>
         <Route path="/resources" component={Resources}/>
         <Route path="/users" component={Users}/>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import './Navbar.scss';
 
-const token = localStorage.getItem("AUTH_TOKEN")
+export default function Navbar({token, setToken}) {
 
-export default function Navbar({token}) {
+    const history = useHistory();
 
     return (
         <nav className="navbar">
@@ -23,12 +23,20 @@ export default function Navbar({token}) {
                 <Link className="link" to='/login'><button className="navbar__auth">Sign In</button></Link>
                 <Link className="link" to='/signup'><button className="navbar__auth">Sign Up</button></Link>
                 </>
-                : <Link className="link" to={{
+                : 
+                <>
+                <Link className="link" to={{
                     pathname:'/profile',
                     state:{
                         userId: token.user._id
                     }
-                    }} >User X</Link> 
+                    }} >User X</Link>
+                    <button onClick={()=> {
+                        setToken('')
+                        localStorage.removeItem("AUTH_TOKEN");
+                        history.push('/');
+                    }}>Sign Out</button>
+                </>
                 }
                 </div>
             </div>
