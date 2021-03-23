@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
+import OptionsBox from '../OptionsBox/OptionsBox';
 import './AdditionalInfo.scss';
 
 export default function AdditionalInfo() {
 
     const [guide, setGuide] = useState(false);
-    const [other, setOther] = useState('');
-    const [ list, setList] = useState(["Job", "Vacation", "Immigration"])
-    const [chosen, setChosen] = useState([]);
 
     return (
         <div className="additional-info">
@@ -28,41 +26,9 @@ export default function AdditionalInfo() {
                     setGuide(!guide)
                 }}/>
             </div>
-            <div className="chosen">
-                {chosen.map((item)=>{
-                    return (
-                        <div>
-                            {item}
-                        </div>
-                    )
-                })}
-            </div>
-            <div className="options">
-                {list.map((item)=>{
-                    return (
-                        <div onClick={()=>{
-                            let newList = [...chosen]
-                            newList.push(item)
-                            setChosen(newList);
-                            console.log(chosen)
-                        }}>
-                            {item}
-                        </div>
-                    )
-                })}
-            </div>
-            <div>
-                <label htmlFor="" onClick={()=>{
-                    let newItem = other;
-                    let newList = [...chosen]
-                    newList.push(newItem)
-                    setChosen(newList);
-                    setOther('')
-                }}>Add</label>
-                <input type="text" placeholder="others" value={other} onChange={(event)=>{
-                    setOther(event.target.value)}}/>
-            </div>
-
+            
+            <OptionsBox/>
+            
             { guide ? 
                 <>
                     <div>
