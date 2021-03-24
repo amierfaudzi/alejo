@@ -29,6 +29,26 @@
     }
 }
 
+.user-box {
+
+    &__main {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    &__secondary {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+}
+
 .info-box {
     border: 1px gray solid;
     border-radius: 6px;

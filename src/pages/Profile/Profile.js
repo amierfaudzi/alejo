@@ -6,6 +6,8 @@ import { ReactComponent as Edit } from '../../assets/icons/edit.svg';
 import { ReactComponent as Expertise } from '../../assets/icons/expertise.svg';
 import { ReactComponent as Calendly } from '../../assets/icons/calendly.svg';
 import { ReactComponent as Quote } from '../../assets/icons/quote.svg';
+import { ReactComponent as Location } from '../../assets/icons/location.svg';
+import { ReactComponent as Email } from '../../assets/icons/email.svg';
 import FakeProfilePic from '../../assets/images/miguel-bruna.jpg';
 
 
@@ -56,11 +58,20 @@ export default function Profile(props) {
                 <div>
                     {loading ? "Loading"
                     :
-                    <>
-                    <h2>{user.firstName + " " + user.lastName}</h2>
-                    <h3>{user.email}</h3>
-                    {loading ? "Loading location" : user.location}
-                    </>
+                    <div className="user-box">
+                    <p className="user-box__main">{user.firstName + " " + user.lastName}</p>
+                    
+                    <div className="user-box__wrapper">
+                        <Email/>
+                        <p className="user-box__secondary">{user.email}</p>
+                    </div>
+                    
+                    <div className="user-box__wrapper">
+                        <Location/>
+                        <p className="user-box__secondary">{user.location}</p>
+                    </div>
+                    
+                    </div>
                     }
 
                 </div>
