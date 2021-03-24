@@ -1,4 +1,5 @@
 @import '../../styles/mixin';
+@import '../../styles/variable';
 
 .profile {
     @include maximum-content-width;
@@ -11,6 +12,9 @@
 
     &__image {
         border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
     }
 
     &__bio {
@@ -26,7 +30,7 @@
 }
 
 .info-box {
-    border: 1px salmon solid;
+    border: 1px gray solid;
     border-radius: 6px;
     width: 320px;
     height: 180px;
@@ -35,13 +39,21 @@
     &__title {
         display: flex;
         align-items: center;
-        background-color: sandybrown;
-        height: 3rem;
+        height: 4rem;
         padding: 0 2rem;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(182, 175, 175, 0.521);
+
+        h3 {
+            font-weight: 700;
+            font-size: 18px;
+        }
     }
 
     &__content {
         padding: 0.5rem 2rem;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 
@@ -65,4 +77,12 @@
 
 .btn-modal {
     position: absolute;
+}
+
+.pill {
+    background-color: $secondary;
+    color: white;
+    padding: 0 1rem;
+    margin: 0.25rem;
+    border-radius: 6px;
 }

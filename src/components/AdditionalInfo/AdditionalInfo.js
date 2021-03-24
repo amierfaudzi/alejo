@@ -24,7 +24,7 @@ const ADDITIONAL_INFO = gql`
 
 export default function AdditionalInfo({user}) {
 
-    const [guide, setGuide] = useState(false);
+    const [guide, setGuide] = useState(user.guide);
     const [ additionalInfoState, setAdditionalInfoState] = useState({
         about: user.about || '',
         expertise: user.expertise || [],
@@ -42,6 +42,10 @@ export default function AdditionalInfo({user}) {
             calendly: additionalInfoState.calendly,
             quote: additionalInfoState.quote,
             guide: additionalInfoState.guide
+        }, onCompleted: (data) =>{
+            console.log(data)
+        }, onError: (error)=>{
+            console.log(error)
         }
     })
 
@@ -80,7 +84,7 @@ export default function AdditionalInfo({user}) {
             <div className="form form--guide">
                 <h2 className="form__title">Do you wish to be a guide?</h2>
                 <label className="switch">
-                        <input type="checkbox" onChange={()=> {
+                        <input type="checkbox" checked={guide} onChange={()=> {
                             let currentGuide = !guide;
                             setAdditionalInfoState({...additionalInfoState, guide: currentGuide})
                             setGuide(!guide)
@@ -103,6 +107,7 @@ export default function AdditionalInfo({user}) {
             <div>
                 <button>Skip for now</button>
                 <button onClick={()=> {
+                    console.log(additionalInfoState)
                     addUserInfo();
                 }}>Submit</button>
             </div>

@@ -3,6 +3,11 @@ import './Profile.scss';
 import { gql, useQuery } from '@apollo/client';
 import AdditionalInfo from '../../components/AdditionalInfo/AdditionalInfo';
 import { ReactComponent as Edit } from '../../assets/icons/edit.svg';
+import { ReactComponent as Expertise } from '../../assets/icons/expertise.svg';
+import { ReactComponent as Calendly } from '../../assets/icons/calendly.svg';
+import { ReactComponent as Quote } from '../../assets/icons/quote.svg';
+import FakeProfilePic from '../../assets/images/miguel-bruna.jpg';
+
 
 const USERINFO_QUERY = gql`
 query SuperUser($id: ID!){
@@ -46,7 +51,7 @@ export default function Profile(props) {
             <div className="profile__bio">
             <div className="profile__bio-top">
                 <div className="profile__frame">
-                    <img className="profile__image" src="http://placekitten.com/250/250" alt=""/>
+                    <img className="profile__image" src={FakeProfilePic} alt=""/>
                 </div>
                 <div>
                     {loading ? "Loading"
@@ -73,14 +78,25 @@ export default function Profile(props) {
             <div className="info-box">
                 <div className="info-box__title">
                     <h3>Expertise</h3>
+                    <Expertise/>
                 </div>
                 <div className="info-box__content">
-                    {loading ? "Loading" : user.expertise}
+                    {loading ? "Loading" : 
+                    <>
+                        {user.expertise.map((data, index) => {
+                            return (
+                                <div key={index} className="pill">
+                                    <p>{data}</p>
+                                </div>
+                            )
+                        })}
+                    </>}
                 </div>
             </div>
             <div className="info-box">
                 <div className="info-box__title">
                     <h3>Calendly Link</h3>
+                    <Calendly/>
                 </div>
                 <div className="info-box__content">
                     {loading ? "Loading" : user.calendly}
@@ -89,6 +105,7 @@ export default function Profile(props) {
             <div className="info-box">
                 <div className="info-box__title">
                     <h3>Quote</h3>
+                    <Quote/>
                 </div>
                 <div className="info-box__content">
                     {loading ? "Loading" : user.quote}

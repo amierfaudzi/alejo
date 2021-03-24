@@ -3,6 +3,8 @@ import './Home.scss';
 import { ReactComponent as Enjoyable } from '../../assets/icons/enjoyable.svg';
 import { ReactComponent as Supportive } from '../../assets/icons/supportive.svg';
 import { ReactComponent as Reliable } from '../../assets/icons/reliable.svg';
+import HomePic from '../../assets/images/team-fredi.jpg';
+import SecondPic from '../../assets/images/heylagostechie.jpg';
 
 export default function Home() {
     return (
@@ -13,8 +15,8 @@ export default function Home() {
                     <p className="hero__content-description">Connect with professional guides and get access to useful resources that will give you up to date information on all you need to do to make settling in easy.</p>
                     <button>Join Community</button>
                 </div>
-                <div className="hero__image">
-                    <img src="http://placekitten.com/400/480" alt=""/>
+                <div>
+                    <img className="hero__image" src={HomePic} alt=""/>
                 </div>
             </div>
 
@@ -41,7 +43,7 @@ export default function Home() {
 
             <div className="additionalInfo">
                     <div>
-                        <img src="http://placekitten.com/400/400" alt=""/>
+                        <img className="additionalInfo__image" src={SecondPic} alt=""/>
                     </div>
                     <div className="additionalInfo__content">
                         <h2 className="additionalInfo__title">In a land of opportunities, you need the right directions</h2>
