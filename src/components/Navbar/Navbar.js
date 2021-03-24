@@ -30,7 +30,7 @@ export default function Navbar({token, setToken}) {
                     state:{
                         userId: token.user._id
                     }
-                    }} >User X</Link>
+                    }} >{token.user.firstName}</Link>
                     <button onClick={()=> {
                         setToken('')
                         localStorage.removeItem("AUTH_TOKEN");

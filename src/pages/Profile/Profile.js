@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Profile.scss';
 import { gql, useQuery } from '@apollo/client';
 
@@ -20,7 +20,9 @@ query SuperUser($id: ID!){
 
 export default function Profile(props) {
     
-    let userId = props.location.state.data?.login.user._id || props.location.state.userId;
+    const [editModal, setEditModal]=useState(false)
+    
+    let userId = props.location.state.data?.login?.user._id || props.location.state.userId;
     let user;
     const {loading, error, data} = useQuery(USERINFO_QUERY, {
         variables: {

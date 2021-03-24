@@ -102,7 +102,9 @@ export default function AdditionalInfo() {
             ''}
             <div>
                 <button>Skip for now</button>
-                <button onClick={()=> console.log(additionalInfoState)}>Submit</button>
+                <button onClick={()=> {
+                    addUserInfo();
+                }}>Submit</button>
             </div>
         </div>
     )
