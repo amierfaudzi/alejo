@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './OptionsBox.scss';
 import {ReactComponent as Plus} from '../../assets/icons/add.svg'
 
-export default function OptionsBox({setAdditionalInfoState, additionalInfoState}) {
+export default function OptionsBox({setAdditionalInfoState, additionalInfoState, user}) {
 
     const [other, setOther] = useState('');
     const [ list, setList] = useState(["Job", "Vacation", "Immigration"])
-    const [chosen, setChosen] = useState([]);
+    const [chosen, setChosen] = useState(user.expertise || []);
 
     return (
         <div className="options-box">

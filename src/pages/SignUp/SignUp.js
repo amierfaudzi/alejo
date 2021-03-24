@@ -3,7 +3,6 @@ import './SignUp.scss';
 import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router';
 import Loading from '../../assets/icons/loading.gif'
-import AdditionalInfo from '../../components/AdditionalInfo/AdditionalInfo';
 
 const USER_SIGNUP = gql`
     mutation SignUp($firstName: String!, $lastName: String!, $email: String!, $password: String){
@@ -94,8 +93,6 @@ export default function SignUp() {
                     }
                 </div>
             </div>
-
-            <AdditionalInfo/>
         </div>
     )
 }

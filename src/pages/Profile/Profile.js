@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Profile.scss';
 import { gql, useQuery } from '@apollo/client';
-
+import AdditionalInfo from '../../components/AdditionalInfo/AdditionalInfo';
+import { ReactComponent as Edit } from '../../assets/icons/edit.svg';
 
 const USERINFO_QUERY = gql`
 query SuperUser($id: ID!){
@@ -33,63 +34,71 @@ export default function Profile(props) {
         console.log(data, loading, error);
         user = data.superUser;
         console.log(user)
-
     }
     
     return (
         <div className="profile">
+            <button className="btn-modal" onClick={()=>{
+                setEditModal(!editModal)
+            }}> <Edit/></button>
+            {!editModal ?
+            <>
             <div className="profile__bio">
-                <div className="profile__bio-top">
-                    <div className="profile__frame">
-                        <img className="profile__image" src="http://placekitten.com/250/250" alt=""/>
-                    </div>
-                    <div>
-                        {loading ? "Loading"
-                        :
-                        <>
-                        <h2>{user.firstName + " " + user.lastName}</h2>
-                        <h3>{user.email}</h3>
-                        {loading ? "Loading location" : user.location}
-                        </>
-                        }
+            <div className="profile__bio-top">
+                <div className="profile__frame">
+                    <img className="profile__image" src="http://placekitten.com/250/250" alt=""/>
+                </div>
+                <div>
+                    {loading ? "Loading"
+                    :
+                    <>
+                    <h2>{user.firstName + " " + user.lastName}</h2>
+                    <h3>{user.email}</h3>
+                    {loading ? "Loading location" : user.location}
+                    </>
+                    }
 
-                    </div>
-                </div>
-                <div className="extras">
-                    <div className="extras__title">
-                        About
-                    </div>
-                    <div className="extras__content">
-                    {loading ? "Loading" : user.about}
-                    </div>
                 </div>
             </div>
-            <div className="profile__info">
-                <div className="info-box">
-                    <div className="info-box__title">
-                        <h3>Expertise</h3>
-                    </div>
-                    <div className="info-box__content">
-                        {loading ? "Loading" : user.expertise}
-                    </div>
+            <div className="extras">
+                <div className="extras__title">
+                    About
                 </div>
-                <div className="info-box">
-                    <div className="info-box__title">
-                        <h3>Calendly Link</h3>
-                    </div>
-                    <div className="info-box__content">
-                        {loading ? "Loading" : user.calendly}
-                    </div>
-                </div>
-                <div className="info-box">
-                    <div className="info-box__title">
-                        <h3>Quote</h3>
-                    </div>
-                    <div className="info-box__content">
-                        {loading ? "Loading" : user.quote}
-                    </div>
+                <div className="extras__content">
+                {loading ? "Loading" : user.about}
                 </div>
             </div>
+        </div>
+        <div className="profile__info">
+            <div className="info-box">
+                <div className="info-box__title">
+                    <h3>Expertise</h3>
+                </div>
+                <div className="info-box__content">
+                    {loading ? "Loading" : user.expertise}
+                </div>
+            </div>
+            <div className="info-box">
+                <div className="info-box__title">
+                    <h3>Calendly Link</h3>
+                </div>
+                <div className="info-box__content">
+                    {loading ? "Loading" : user.calendly}
+                </div>
+            </div>
+            <div className="info-box">
+                <div className="info-box__title">
+                    <h3>Quote</h3>
+                </div>
+                <div className="info-box__content">
+                    {loading ? "Loading" : user.quote}
+                </div>
+            </div>
+        </div>
+        </>
+        :
+        <AdditionalInfo user={user}/>
+        }
         </div>
     )
 }

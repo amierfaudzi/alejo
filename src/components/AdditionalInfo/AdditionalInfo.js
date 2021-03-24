@@ -22,16 +22,16 @@ const ADDITIONAL_INFO = gql`
     }
 `
 
-export default function AdditionalInfo() {
+export default function AdditionalInfo({user}) {
 
     const [guide, setGuide] = useState(false);
     const [ additionalInfoState, setAdditionalInfoState] = useState({
-        about: '',
-        expertise: [],
-        location: '',
-        calendly: '',
-        quote: '',
-        guide: false
+        about: user.about || '',
+        expertise: user.expertise || [],
+        location: user.location ||'',
+        calendly: user.calendly ||'',
+        quote: user.quote || '',
+        guide: user.guide || false
     });
 
     const [addUserInfo, { loading, error} ] = useMutation(ADDITIONAL_INFO, {
@@ -74,7 +74,7 @@ export default function AdditionalInfo() {
             
             <div className="form">
                 <h2 className="form__title">Kindly select your area of interest</h2>
-                <OptionsBox setAdditionalInfoState={setAdditionalInfoState} additionalInfoState={additionalInfoState}/>
+                <OptionsBox setAdditionalInfoState={setAdditionalInfoState} additionalInfoState={additionalInfoState} user={user}/>
             </div>
             
             <div className="form form--guide">
