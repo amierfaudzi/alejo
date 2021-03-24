@@ -28,3 +28,19 @@
         width: 1080px;
     }
 }
+
+// Button
+@mixin btn {
+    padding: 0 1rem;
+    margin-right: 1rem;
+    height: 3rem;
+    border-radius: 5px;
+    color: white;
+    background-color: $primary;
+    transition: 0.6s;
+
+    &:hover {
+        background-color: white;
+        color: $primary;
+    }
+}
