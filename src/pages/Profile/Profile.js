@@ -28,9 +28,11 @@ query SuperUser($id: ID!){
 
 export default function Profile(props) {
     
-    const [editModal, setEditModal]=useState(false)
+    const [editModal, setEditModal]=useState(false);
     
-    let userId = props.location.state.data?.login?.user._id || props.location.state.userId;
+    let userId = props.location.state?.data?.login?.user._id || props.location?.state?.userId;
+    let token = props.location?.state?.token || props.location.state?.data?.login?.token || '';  
+    
     let user;
     const {loading, error, data} = useQuery(USERINFO_QUERY, {
         variables: {
@@ -40,14 +42,21 @@ export default function Profile(props) {
     if(data){
         console.log(data, loading, error);
         user = data.superUser;
-        console.log(user)
     }
+
+    console.log(userId, token)
     
     return (
         <div className="profile">
-            <button className="btn-modal" onClick={()=>{
+            {token ? 
+             <button className="btn-modal" onClick={()=>{
                 setEditModal(!editModal)
             }}> <Edit/></button>
+            :
+
+            ""
+            }
+           
             {!editModal ?
             <>
             <div className="profile__bio">

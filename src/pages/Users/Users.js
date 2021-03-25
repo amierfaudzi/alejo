@@ -19,7 +19,7 @@ const ALL_USERS = gql`
   }
 }`
 
-export default function Users() {
+export default function Users({token}) {
 
     const {loading, error, data} = useQuery(ALL_USERS);
 
@@ -33,7 +33,7 @@ export default function Users() {
             <>
                 {data.superUsers.map(user => {
                     return (
-                        <UserCard user={user} key={user._id}/>
+                        <UserCard user={user} key={user._id} token={token}/>
                     )
                 })}
             </>

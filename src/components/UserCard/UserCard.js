@@ -2,7 +2,7 @@ import React from 'react';
 import './UserCard.scss';
 import { Link } from 'react-router-dom';
 
-export default function UserCard({user}) {
+export default function UserCard({user, token}) {
 
     console.log(user)
 
@@ -11,7 +11,8 @@ export default function UserCard({user}) {
         <Link to={{
             pathname:'/profile',
             state: {
-                userId: user._id
+                userId: user._id,
+                token: token
             }
             }}>
             <div className="user-card">

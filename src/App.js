@@ -21,10 +21,10 @@ function App() {
       <Header token={token} setToken={setToken}/>
       <Switch>
         <Route path="/resources" render={() => <Resources token={token} />}/>
-        <Route path="/users" component={Users}/>
+        <Route path="/users" render={() => <Users token={token} />}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/login" render={() => <Login setToken={setToken} />}/>
-        <Route path="/signup" render={() => <SignUp setToken={setToken} />}/>\
+        <Route path="/signup" render={() => <SignUp setToken={setToken} />}/>
         <Route path="/thread" render={() => <Thread/>}/>
         <Route path="/" component={Home}/>
       </Switch>
