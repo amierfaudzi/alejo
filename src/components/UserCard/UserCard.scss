@@ -20,6 +20,9 @@
     &__image {
         display: inline-block;
         border-radius: 6px 6px 0 0;
+        height: 200px;
+        width: 300px;
+        object-fit: cover;
     }
 
     &__info {

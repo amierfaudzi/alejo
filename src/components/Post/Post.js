@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import './Post.scss';
 import { gql, useMutation } from '@apollo/client';
 import { QUESTIONS_QUERY } from '../../pages/Resources/Resources';
+import FakePictureGenerator from '../FakePictureGenerator/FakePictureGenerator';
 
 const ADD_ANSWER = gql`
     mutation AddQuestion($content: String!){
@@ -31,7 +32,8 @@ export default function Post({post, token}) {
         <div className="post">
             <div className="post__wrapper">
                 <div className="post__header">
-                    <img src="http://placekitten.com/48/48" alt="" className={post.question.creator.guide ? "post__image post__image--guide" : "post__image"}/>
+                    {/* <img src="http://placekitten.com/48/48" alt="" className={post.question.creator.guide ? "post__image post__image--guide" : "post__image"}/> */}
+                    <FakePictureGenerator userId={post.question.creator._id} name={(post.question.creator.guide ? "post__image post__image--guide" : "post__image")}/>
                         <p className="post__poster">{post.question.creator.name}</p>
                         <p>{timeConverter(Number(post.question.date))}</p>
                 </div>

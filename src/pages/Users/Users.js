@@ -39,7 +39,8 @@ export default function Users({token}) {
                 })}
             </>
             :
-            {Loading}}
+            <img src={Loading} alt=""/>
+            }
         </div>
     )
 }

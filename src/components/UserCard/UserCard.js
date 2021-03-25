@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserCard.scss';
 import { Link } from 'react-router-dom';
+import FakePictureGenerator from '../FakePictureGenerator/FakePictureGenerator';
 
 export default function UserCard({user, token}) {
 
@@ -17,7 +18,7 @@ export default function UserCard({user, token}) {
             }}>
             <div className={user.guide ? "user-card user-card--guide" :"user-card"}>
                 <div className="user-card__main">
-                    <img src="http://placekitten.com/300/200" alt="" className="user-card__image"/>
+                    <FakePictureGenerator userId={user._id} name="user-card__image"/>
                     <div className="user-card__info">
                         <h2>{user.firstName + " " + user.lastName}</h2>
                         <h3>{user.location}</h3>

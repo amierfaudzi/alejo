@@ -8,7 +8,7 @@ import { ReactComponent as Calendly } from '../../assets/icons/calendly.svg';
 import { ReactComponent as Quote } from '../../assets/icons/quote.svg';
 import { ReactComponent as Location } from '../../assets/icons/location.svg';
 import { ReactComponent as Email } from '../../assets/icons/email.svg';
-import FakeProfilePic from '../../assets/images/miguel-bruna.jpg';
+import FakePictureGenerator from '../../components/FakePictureGenerator/FakePictureGenerator';
 
 
 const USERINFO_QUERY = gql`
@@ -62,7 +62,7 @@ export default function Profile(props) {
             <div className="profile__bio">
             <div className="profile__bio-top">
                 <div className="profile__frame">
-                    <img className="profile__image" src={FakeProfilePic} alt=""/>
+                    <FakePictureGenerator userId={userId} name="profile__image"/>
                 </div>
                 <div>
                     {loading ? "Loading"
