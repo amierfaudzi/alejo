@@ -42,20 +42,23 @@ export default function OptionsBox({setAdditionalInfoState, additionalInfoState,
                 })}
             </>
             <div className="other">
-                <label htmlFor="" onClick={()=>{
-                    if(other){
-                        let newItem = other;
-                        let newList = [...chosen]
-                        newList.push(newItem)
-                        setChosen(newList);
-                        setAdditionalInfoState({...additionalInfoState, expertise: newList});
-                        setOther('');
-                    } else {
-                        alert("Please fill in the option!")
-                    }
-                }}><Plus className="other__icon"/></label>
                 <input type="text" placeholder="others" value={other} onChange={(event)=>{
-                    setOther(event.target.value)}} className="other__input"/>
+                    setOther(event.target.value)}} className="other__input" onKeyDown={(event)=>{
+                        if(event.key=="Enter"){
+                            if(other){
+                                let newItem = other;
+                                let newList = [...chosen]
+                                newList.push(newItem)
+                                setChosen(newList);
+                                setAdditionalInfoState({...additionalInfoState, expertise: newList});
+                                setOther('');
+                            } else {
+                                alert("Please fill in the option!")
+                            }
+                        }
+                    }}/>
+                        <Plus className="other__icon"/>
+
             </div>
         </div>
     )

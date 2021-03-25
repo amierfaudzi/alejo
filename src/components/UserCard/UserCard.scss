@@ -1,6 +1,12 @@
 .user-card {
     margin: 0 2rem 2rem 0;
     position: relative;
+    border-radius: 6px;
+
+    &--guide {
+        border: 4px solid goldenrod;
+        border-radius: 10px;
+    }
 
     &__main {
         height: 300px;
@@ -12,18 +18,17 @@
     }
 
     &__image {
-        display: block;
-        border: 6px 6px 0 0;
+        display: inline-block;
+        border-radius: 6px 6px 0 0;
     }
 
     &__info {
-        background-color: turquoise;
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 0 2rem;
-        border: 0 0 6px 6px;
+        border-radius: 0 0 6px 6px;
     }
 
     &__side {
@@ -59,4 +64,9 @@
           }
         }
     }
+}
+
+.user-link {
+    text-decoration: none;
+    color: black;
 }

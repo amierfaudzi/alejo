@@ -3,7 +3,7 @@ import './Resources.scss';
 import { gql, useQuery } from '@apollo/client';
 import Post from '../../components/Post/Post';
 import PostForm from '../../components/PostForm/PostForm';
-import Loading from '../../assets/icons/loading.gif'
+import Loading from '../../assets/icons/loading.gif';
 import Networking from '../../assets/images/christina-wocintechchat.jpg';
 import General from '../../assets/images/austin-distel.jpg';
 import Academic from '../../assets/images/clay-banks.jpg';
@@ -43,6 +43,7 @@ export default function Resources({token}) {
         console.log(data, loading, error);
         data.allQuestions.map(data => {
             sortedData.push(data)
+            return
         })
 
         sortedData.sort((a,b) => b.question.date-a.question.date);

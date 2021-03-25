@@ -7,6 +7,8 @@
 
 .options {
     display: flex;
+    align-items: center;
+    height: 2rem;
     background-color: skyblue;
     padding: 0.25rem 1rem 0 1rem;
     border: 1px solid black;
@@ -31,7 +33,7 @@
     &__icon {
         height: 1rem;
         width: 1rem;
-        margin-right: 0.5rem;
+        margin-left: 0.25rem;
     }
 
     &__input {

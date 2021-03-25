@@ -8,14 +8,14 @@ export default function UserCard({user, token}) {
 
     return (
         <>
-        <Link to={{
+        <Link className="user-link" to={{
             pathname:'/profile',
             state: {
                 userId: user._id,
                 token: token
             }
             }}>
-            <div className="user-card">
+            <div className={user.guide ? "user-card user-card--guide" :"user-card"}>
                 <div className="user-card__main">
                     <img src="http://placekitten.com/300/200" alt="" className="user-card__image"/>
                     <div className="user-card__info">

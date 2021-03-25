@@ -15,6 +15,7 @@ const ADD_ANSWER = gql`
 export default function Post({post, token}) {
 
     const [reply, setReply] = useState('');
+    console.log("THis is the post.guide", post.question.creator.guide)
 
     const [newAnswer] = useMutation(ADD_ANSWER, { variables: {
         content: reply

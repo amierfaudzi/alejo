@@ -134,7 +134,7 @@ export default function Profile(props) {
         </div>
         </>
         :
-        <AdditionalInfo user={user}/>
+        <AdditionalInfo user={user} editModal={editModal} setEditModal={setEditModal}/>
         }
         </div>
     )
