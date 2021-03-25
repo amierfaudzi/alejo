@@ -1,8 +1,26 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './Post.scss';
+import { gql, useMutation } from '@apollo/client';
+import { QUESTIONS_QUERY } from '../../pages/Resources/Resources';
+
+const ADD_ANSWER = gql`
+    mutation AddQuestion($content: String!){
+        addAnswer(answerInput: {content: $content}){
+            content
+        }
+    }
+`
 
 export default function Post({post, token}) {
+
+    const [reply, setReply] = useState('');
+
+    const [newAnswer] = useMutation(ADD_ANSWER, { variables: {
+        content: reply
+    }, refetchQueries: [
+        {query: QUESTIONS_QUERY}
+    ]})
 
     const history = useHistory();
     const [showThread, setShowThread] = useState(false);
@@ -21,9 +39,13 @@ export default function Post({post, token}) {
                 {showReply ?
                     <div>
                         <div className="reply">
-                            <input type="text" className="reply__input" placeholder="Share your thoughts"/>
+                            <input type="text" className="reply__input" placeholder="Share your thoughts"
+                            value={reply}
+                            onChange={(event)=>{
+                                setReply(event.target.value)
+                            }}/>
                         </div>
-                        <button className="button button--reply">Submit</button>
+                        <button className="button button--reply" onClick={newAnswer}>Submit</button>
                     </div>
                 : ""}
 
