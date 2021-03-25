@@ -4,13 +4,32 @@ import { gql, useQuery } from '@apollo/client';
 import Post from '../../components/Post/Post';
 import PostForm from '../../components/PostForm/PostForm';
 import Loading from '../../assets/icons/loading.gif'
+import Networking from '../../assets/images/christina-wocintechchat.jpg';
+import General from '../../assets/images/austin-distel.jpg';
+import Academic from '../../assets/images/clay-banks.jpg';
+import Financial from '../../assets/images/ben-duchac.jpg';
 
 export const QUESTIONS_QUERY = gql`
     query {
         allQuestions {
-            content,
-            _id,
-            date
+            question {
+                content,
+                date,
+                creator {
+                    name,
+                    _id,
+                    guide
+                }
+            },
+            answers {
+                content,
+                date,
+                creator {
+                    name,
+                    _id,
+                    guide
+                }
+            }
         }
     }
 `;
@@ -26,8 +45,8 @@ export default function Resources({token}) {
             sortedData.push(data)
         })
 
-        sortedData.sort((a,b) => b.date-a.date);
-        console.log(sortedData);
+        sortedData.sort((a,b) => b.question.date-a.question.date);
+        console.log("This is the sorted data -if any",sortedData);
     }
 
     return (
@@ -41,27 +60,27 @@ export default function Resources({token}) {
             </div>
             <div className="resources__tray">
                 <div className="resource-card">
-                    <img src="http://placekitten.com/240/135" alt="" className="resource-card__image"/>
+                    <img className="resource-card__image" src={General} alt="" className="resource-card__image"/>
                     <div className="resource-card__content">
-                        <p>Find Jobs</p>
+                        <p>General</p>
                     </div>
                 </div>
                 <div className="resource-card">
-                    <img src="http://placekitten.com/240/135" alt="" className="resource-card__image"/>
+                    <img className="resource-card__image" src={Academic} alt="" className="resource-card__image"/>
                     <div className="resource-card__content">
-                        <p>Find Jobs</p>
+                        <p>Academic</p>
                     </div>
                 </div>
                 <div className="resource-card">
-                    <img src="http://placekitten.com/240/135" alt="" className="resource-card__image"/>
+                    <img className="resource-card__image" src={Networking} alt="" className="resource-card__image"/>
                     <div className="resource-card__content">
-                        <p>Find Jobs</p>
+                        <p>Networking</p>
                     </div>
                 </div>
                 <div className="resource-card">
-                    <img src="http://placekitten.com/240/135" alt="" className="resource-card__image"/>
+                    <img className="resource-card__image" src={Financial} alt="" className="resource-card__image"/>
                     <div className="resource-card__content">
-                        <p>Find Jobs</p>
+                        <p>Financial</p>
                     </div>
                 </div>
                 
@@ -75,10 +94,9 @@ export default function Resources({token}) {
                 
                 <div className="community-post">
                     {!loading ? 
-                        sortedData.map(data => {
-                            console.log(data)
+                        sortedData.map((data, index) => {
                             return (
-                                <Post key={data._id} post={data}/>
+                                <Post key={index} post={data} token={token}/>
                             )
                         })
                     : <img src={Loading} alt=""/>}

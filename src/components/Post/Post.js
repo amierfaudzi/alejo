@@ -1,36 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './Post.scss';
 
-export default function Post({post}) {
-
-    console.log(post)
-
-    // const newPost = {
-    //     content: "This is the question content",
-    //     date: "Today-ish",
-    //     userId : {
-    //         name: firstName + lastName,
-    //         guide: true,
-    //         id: id
-    //     }
-    // }
-
-
+export default function Post({post, token}) {
 
     const history = useHistory();
+    const [showThread, setShowThread] = useState(false);
+    const [ showReply, setShowReply] = useState(false);
 
     return (
         <div className="post">
-            <img src="http://placekitten.com/80/80" alt="" className="post__image"/>
-                <div className="post__content">
-                <p className="post__poster">Amier Faudzi</p>
-                <p>{post.content}</p>
-                <p>{timeConverter(Number(post.date))}</p>
-                <button onClick={()=>{
-                    history.push('/thread');
+            <div className="post__wrapper">
+                <div className="post__header">
+                    <img src="http://placekitten.com/48/48" alt="" className={post.question.creator.guide ? "post__image post__image--guide" : "post__image"}/>
+                        <p className="post__poster">{post.question.creator.name}</p>
+                        <p>{timeConverter(Number(post.question.date))}</p>
+                </div>
+                <p className="post__content">{post.question.content}</p>
+
+                {showReply ?
+                    <div>
+                        <div className="reply">
+                            <input type="text" className="reply__input" placeholder="Share your thoughts"/>
+                        </div>
+                        <button className="button button--reply">Submit</button>
+                    </div>
+                : ""}
+
+                <button className="button" onClick={()=>{
+                    setShowThread(!showThread)
                 }}>View thread</button>
+                {token ? 
+                    <button className="button" onClick={()=>{
+                        setShowReply(!showReply)
+                    }}>Reply</button>
+                :
+                ""}
             </div>
+            {showThread ?
+            <>
+                {post.answers.length ?
+                    <div className="replies-wrapper">                
+                    {post.answers.map((answer, index)=> {
+                        return (
+                            <div className="replies" key={index}>
+                                <p>{answer.content}</p>
+                            </div>
+                        )
+                    })}
+                    </div>
+                : 
+                <div className="replies">
+                    <p>{token ? "Be the first one to reply!" : "Login and be the first one to reply!"}</p>
+                </div> }
+ 
+            </>
+            : ''}
         </div>
     )
 }

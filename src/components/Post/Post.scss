@@ -1,25 +1,63 @@
 .post{
     margin: 0 auto 2rem auto;
-    height: 120px;
+    min-height: 120px;
     width: 728px;
     border: solid 1px black;
-    position: relative;
     border-radius: 5px;
+    padding: 1rem;
 
     &__image {
         border-radius: 50%;
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
+        margin-right: 1rem;
+
+        &--guide {
+            border: 4px solid goldenrod;
+        }
     }
 
-    &__content {
-        position: absolute;
-        left: 7rem;
-        top: 1rem;
+    &__header {
+        display: flex;
+        align-items: center;
     }
 
     &__poster {
         font-weight: bold;
+        font-size: 1.5rem;
+        margin-right: 1rem;
     }
+
+    &__content {
+        margin-bottom: 2rem;
+    }
+}
+
+.reply {
+    display: flex;
+
+    &__input {
+        margin-bottom: 1.5rem;
+        height: 3.75rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        border-radius: 5px;
+        border-style: solid;
+        width: 100%;
+    }
+}
+
+.button--reply {
+    align-self: flex-end;
+}
+
+.replies {
+    padding: 1rem 0;
+    background-color: gainsboro;
+}
+.replies:first-child {
+    margin-top: 2rem;
+}
+
+.replies:nth-child(2) {
+    background-color: white;
 }
