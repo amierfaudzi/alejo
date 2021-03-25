@@ -95,8 +95,25 @@
     }
 }
 
-.btn-modal {
-    position: absolute;
+.modal {
+
+    &__btn{
+        position: absolute;
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+        border-style: none;
+        background-color: $primary;
+    }
+
+    &__btn:hover {
+        cursor: pointer;
+    }
+
+    &__icon {
+        fill: whitesmoke;
+    }
+
 }
 
 .pill {

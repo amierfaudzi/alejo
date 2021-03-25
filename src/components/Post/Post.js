@@ -4,6 +4,20 @@ import './Post.scss';
 
 export default function Post({post}) {
 
+    console.log(post)
+
+    // const newPost = {
+    //     content: "This is the question content",
+    //     date: "Today-ish",
+    //     userId : {
+    //         name: firstName + lastName,
+    //         guide: true,
+    //         id: id
+    //     }
+    // }
+
+
+
     const history = useHistory();
 
     return (

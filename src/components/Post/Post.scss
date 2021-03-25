@@ -1,0 +1,25 @@
+.post{
+    margin: 0 auto 2rem auto;
+    height: 120px;
+    width: 728px;
+    border: solid 1px black;
+    position: relative;
+    border-radius: 5px;
+
+    &__image {
+        border-radius: 50%;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
+
+    &__content {
+        position: absolute;
+        left: 7rem;
+        top: 1rem;
+    }
+
+    &__poster {
+        font-weight: bold;
+    }
+}

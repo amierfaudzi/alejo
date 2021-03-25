@@ -49,9 +49,9 @@ export default function Profile(props) {
     return (
         <div className="profile">
             {token ? 
-             <button className="btn-modal" onClick={()=>{
+             <button className="modal__btn" onClick={()=>{
                 setEditModal(!editModal)
-            }}> <Edit/></button>
+            }}> <Edit className="modal__icon"/></button>
             :
 
             ""
