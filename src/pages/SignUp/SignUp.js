@@ -55,7 +55,7 @@ export default function SignUp() {
             </div>
             <div className="sign-up">
                 <div className="sign-up-header">
-                        <h1 className="sign-up-header__main">Alejo</h1>
+                        {/* <h1 className="sign-up-header__main">Alejo</h1> */}
                         <p className="sign-up-header__title">Create Account</p>
                         <p className="sign-up-header__subtitle">Log in to your account to continue participating in the community</p>
                     </div>

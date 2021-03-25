@@ -50,7 +50,7 @@ export default function Login({setToken}) {
         <div className="login">
             <div className="sign-in">
                     <div className="sign-in-header">
-                        <h1 className="sign-in-header__main">Alejo</h1>
+                        {/* <h1 className="sign-in-header__main">Alejo</h1> */}
                         <p className="sign-in-header__title">Welcome Back</p>
                         <p className="sign-in-header__subtitle">Log in to your account to continue participating in the community</p>
                     </div>
