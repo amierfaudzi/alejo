@@ -1,6 +1,81 @@
 @import '../../styles/mixin';
+@import '../../styles/variable';
 
 .signup {
     @include maximum-content-width;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    &__image {
+        height: calc(100vh - 5rem);
+        margin-top: -3rem;
+        max-width: 600px;
+        object-fit: cover;
+    }
+}
+
+.sign-up {
+    text-align: center;
+
+    &__footnote {
+        margin-top: 2rem;
+    }
+}
+
+.sign-up-header {
+    margin-bottom: 1.5rem;
+
+    &__main {
+        color: $primary;
+        margin-bottom: 2rem;
+    }
+
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.signup-input {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: 0.75rem;
+        text-align: left;
+    }
+
+    &__input {
+        margin-bottom: 1.25rem;
+        height: 3.75rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        border-radius: 5px;
+        border-style: solid;
+    }
+}
+
+.button--signup {
+    margin: 0;
+    width: 100%;
+}
+
+.name-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.portal {
+    font-weight: 700;
+
+    &__link {
+        text-decoration: none;
+        color: $primary;
+    }
+
+    &__link:hover {
+        text-decoration: underline;
+    }
 }

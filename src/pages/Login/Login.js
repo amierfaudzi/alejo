@@ -3,7 +3,7 @@ import './Login.scss';
 import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router';
 import Loading from '../../assets/icons/loading.gif';
-import SignIn from '../../assets/images/team-fredi.jpg';
+import SignInPic from '../../assets/images/team-fredi.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -81,7 +81,7 @@ export default function Login({setToken}) {
                
             </div>
             <div className="login-right">
-                <img className="login__image" src={SignIn} alt=""/>
+                <img className="login__image" src={SignInPic} alt=""/>
             </div>
         </div>
     )
