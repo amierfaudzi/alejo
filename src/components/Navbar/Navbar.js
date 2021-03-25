@@ -24,7 +24,7 @@ export default function Navbar({token, setToken}) {
                 <Link className="link" to='/signup'><button className="navbar__btn navbar__btn--secondary">Join Community</button></Link>
                 </>
                 : 
-                <>
+                <div className="navbar__right">
                 <Link className="link" to={{
                     pathname:'/profile',
                     state:{
@@ -32,12 +32,12 @@ export default function Navbar({token, setToken}) {
                     }
                     }}>
                     <p className="navbar__item">{token.user.firstName}</p></Link>
-                    <button className="navbar__btn" onClick={()=> {
+                    <button className="navbar__btn navbar__btn--special" onClick={()=> {
                         setToken('')
                         localStorage.removeItem("AUTH_TOKEN");
                         history.push('/');
                     }}>Sign Out</button>
-                </>
+                </div>
                 }
                 </div>
             </div>

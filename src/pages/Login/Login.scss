@@ -11,6 +11,8 @@
     &__image {
         height: calc(100vh - 5rem);
         margin-top: -3rem;
+        max-width: 600px;
+        object-fit: cover;
     }
 }
 

@@ -11,6 +11,12 @@
 
     &__right {
         display: flex;
+        align-items: center;
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
     }
 
     &__lists {
@@ -43,17 +49,23 @@
         &:hover {
             background-color: white;
             color: $primary;
+            cursor: pointer;
         }
 
         &--secondary:hover {
             color: white;
             background-color: $primary;
+            cursor: pointer;
+        }
+
+        &--special {
+            margin-left: 1rem;
         }
     }
 }
 
 .link {
     text-decoration: none;
-    margin: 0 1rem;
+    margin-left:1rem;
     color: white;
 }
