@@ -19,11 +19,7 @@ export default function PostForm({setToken}) {
         content: question
     }, refetchQueries: [
         {query: QUESTIONS_QUERY}
-    ], onCompleted: (data)=>{
-        setQuestion('');
-        setToken(data.signup);
-        localStorage.setItem("AUTH_TOKEN", data.signup.token);
-    }})
+    ]})
 
     return (
         <div className="post-form">
