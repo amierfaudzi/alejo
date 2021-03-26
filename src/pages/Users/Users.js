@@ -24,10 +24,6 @@ export default function Users({token}) {
 
     const {loading, error, data} = useQuery(ALL_USERS);
 
-    if(data){
-      console.log(data.superUsers, loading, error);
-    }
-
     return (
         <div className="users">
             {!loading ?

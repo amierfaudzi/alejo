@@ -16,6 +16,7 @@ export default function Navbar({token, setToken}) {
                 <div className="navbar__lists">
                     <Link className="link" to='/users'><p className="navbar__item">Users</p></Link>
                     <Link className="link" to='/resources'><p className="navbar__item">Resources</p></Link>
+                    <Link className="link" to='/login'><p className="navbar__item navbar__item--secondary">Log In</p></Link>
                 </div>
                 <div className="navbar__auth">
                 {(!token.token) ?

@@ -40,11 +40,8 @@ export default function Profile(props) {
     }});
 
     if(data){
-        console.log(data, loading, error);
         user = data.superUser;
     }
-
-    console.log(userId, token)
     
     return (
         <div className="profile">

@@ -1,7 +1,13 @@
+@import '../../styles/mixin';
+@import '../../styles/variable';
+
 .post{
     margin: 0 auto 2rem auto;
     min-height: 120px;
-    width: 728px;
+    width: 90vw;
+    @include tablet {
+        width: 728px;
+    }
     border: solid 1px black;
     border-radius: 5px;
     padding: 1rem;

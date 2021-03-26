@@ -7,14 +7,25 @@
     &__tray {
         margin: 2rem 0 ;
         display: flex;
-        justify-content: space-around;
-        width: 100%;
+        align-items: center;
+        justify-content:center;
+        flex-wrap: wrap;
+        
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+        }
     }
 }
  
 .resource-card {
     width: 240px;
-    height: 180px;
+    margin-bottom: 1rem;
+    @include tablet {
+        height: 180px;
+        margin-bottom: 0;
+    }
     box-shadow: 6px 6px 10px rgba(128, 128, 128, 0.123);
     border-radius: 8px;
 
@@ -23,28 +34,20 @@
         height: 135px;
         width: 240px;
         object-fit: cover;
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
     }
 
     &__content {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 3rem;
     }
 }
-
-// .form {
-//     input {
-//         width: 600px;
-//         height: 4rem;
-//         //border-radius: 4px;
-//         padding: 0.5rem;
-//         outline: none;
-    
-//         &:focus {
-//             background-color: rgba(64, 224, 208, 0.267);
-//         }
-//     }
-// }
 
 .btn {
     text-transform: uppercase;

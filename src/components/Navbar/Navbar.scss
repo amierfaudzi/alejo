@@ -2,37 +2,71 @@
 @import '../../styles/variable';
 
 .navbar {
-    @include maximum-content-width;
-    height: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto 3rem auto;
 
-    &__right {
-        display: flex;
-        align-items: center;
-    }
+    @include maximum-content-width;
+
+    margin: 0 auto;
 
     &__left {
         display: flex;
-        align-items: center;
-    }
-
-    &__lists {
-        display: flex;
-        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
     }
 
     &__item {
-        
+
+        font-weight: 500;
+
+        &--secondary {
+            @include tablet{
+                display: none;
+            }
+        }
+            
         &--home {
             font-size: 2rem;
             font-weight: 800;
         }
     }
 
+    &__lists {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    &__auth {
+        display: none;
+        @include tablet {
+            display: flex;
+        }
+    }
+
+
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+    
+        &__right {
+            display: flex;
+            align-items: center;
+        }
+    
+        &__left {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+    
+        &__lists {
+            display: flex;
+            align-items: center;
+        }
+    }
+
     &__btn {
+        
         padding: 0 1rem;
         height: 3rem;
         border-radius: 5px;
@@ -44,6 +78,11 @@
         &--secondary {
             background-color: white;
             color: $primary;
+            display: none;
+
+            @include tablet {
+                display: block;
+            }
         }
 
         &:hover {
@@ -62,6 +101,7 @@
             margin-left: 1rem;
         }
     }
+    
 }
 
 .link {

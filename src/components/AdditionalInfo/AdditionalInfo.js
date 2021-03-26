@@ -105,11 +105,10 @@ export default function AdditionalInfo({user, editModal, setEditModal}) {
             :
             ''}
             <div className="additional-info__button-tray">
-                <button className="button" onClick={()=>{
+                <button className="button button--skip" onClick={()=>{
                     setEditModal(!editModal)
                 }}>Skip for now</button>
                 <button className="button" onClick={()=> {
-                    console.log(additionalInfoState)
                     addUserInfo();
                 }}>Submit</button>
             </div>

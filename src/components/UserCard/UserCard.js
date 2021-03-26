@@ -5,8 +5,6 @@ import FakePictureGenerator from '../FakePictureGenerator/FakePictureGenerator';
 
 export default function UserCard({user, token}) {
 
-    console.log(user)
-
     return (
         <>
         <Link className="user-link" to={{

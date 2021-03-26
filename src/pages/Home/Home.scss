@@ -4,24 +4,49 @@
 .home {
     @include maximum-content-width;
     margin: 0 auto;
-    width: 100vw;
+    //width: 100vw;
 }
 
 .hero {
-    height: calc(100vh - 5rem);
+    @include maximum-content-width;
+    margin: 0 auto;
+    height: calc(100vh - 8rem);
     display: flex;
-    align-items: center;
+    flex-direction:column;
+
+    @include tablet{
+        height: calc(100vh - 5rem);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 
     &__image {
-        height: 480px;
+        display: none;
+
+        @include tablet {
+            height: 400px;
+            display: block;
+        }
     }
 
     &__content {
-        margin-right: 2rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        @include tablet {
+            margin-right: 2rem;
+            justify-content: center;
+        }
 
         &-title {
-            margin-bottom: 2rem;
-            font-size: 50px;
+            
+            @include tablet {
+                margin-bottom: 2rem;
+                font-size: 50px;
+            }
         }
 
         &-description {
@@ -35,10 +60,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 4rem;
 
     &__header {
-        width: 60%;
         text-align: center;
+
+        @include tablet{
+            width: 60%;
+        }
     }
 
     &__title {
@@ -50,9 +79,14 @@
 
 .card-wrapper {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 4rem;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+    }
 }
 
 .home-card {
@@ -67,6 +101,11 @@
     padding: 0.5rem;
     text-align: center;
     box-shadow: 3px 3px 3px rgba(179, 171, 171, 0.671);
+    margin-bottom: 2rem;
+
+    @include tablet {
+        margin-bottom: 0;
+    }
 }
 
 .additionalInfo {
@@ -79,11 +118,25 @@
     }
 
     &__content {
-        margin-left: 2rem;
+        
+        @include tablet {
+            margin-left: 2rem;
+        }
     }
 
     &__image {
-        height: 400px;
+        display: none;
+
+        @include tablet {
+            display: block;
+            width: 50vw;
+            margin-bottom: 5rem;
+        }
+
+        @include desktop {
+            width: auto;
+            height: 400px;
+        }
     }
 
     &__description {

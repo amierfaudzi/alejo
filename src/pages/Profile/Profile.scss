@@ -5,6 +5,10 @@
     @include maximum-content-width;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    @include tablet {
+        flex-direction: row;
+    }
 
     &__frame {
         margin-right: 2rem;
@@ -12,19 +16,35 @@
 
     &__image {
         border-radius: 50%;
-        width: 250px;
-        height: 250px;
         object-fit: cover;
+        width: 150px;
+        height: 150px;
+        //position: absolute;
+
+        @include tablet {
+            width: 250px;
+            height: 250px;
+        }
     }
 
     &__bio {
-        flex: 2;
-        padding-right: 2rem;
+        flex: 1;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            flex: 2;
+            padding-right: 2rem;
+            margin-bottom: 0;
+        }
 
         &-top {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
+
+            @include tablet {
+                align-items: center;
+            }
         }
     }
 }
@@ -52,8 +72,11 @@
 .info-box {
     border: 1px gray solid;
     border-radius: 6px;
-    width: 320px;
-    height: 180px;
+    width: 90vw;
+    @include tablet {
+        width: 320px;
+    }
+    min-height: 180px;
     margin-bottom: 1.5rem;
 
     &__title {

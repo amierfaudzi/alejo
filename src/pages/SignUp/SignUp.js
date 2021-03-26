@@ -17,7 +17,7 @@ const USER_SIGNUP = gql`
     }
 `
 
-export default function SignUp() {
+export default function SignUp({setToken}) {
 
     // create a controlled form
     const [state, setState] = useState({
@@ -36,8 +36,14 @@ export default function SignUp() {
         firstName: state.firstName,
         lastName: state.lastName
     }, onCompleted: (data) => {
-        console.log("Hey");
-        console.log(data);
+        setToken(data.login);
+        localStorage.setItem("AUTH_TOKEN", data.login.token)
+        history.push({
+            pathname:`/profile`,
+            state: {
+                data: data
+            }
+        })
         setState({
             password: '',
             confirmPassword: '',

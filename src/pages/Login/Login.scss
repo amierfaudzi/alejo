@@ -5,19 +5,25 @@
     @include maximum-content-width;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    @include desktop {
+        justify-content: space-between;
+    }
     text-align: center;
 
     &__image {
-        height: calc(100vh - 5rem);
-        margin-top: -3rem;
-        max-width: 600px;
-        object-fit: cover;
+        display: none;
+        @include desktop {
+            display: block;
+            height: calc(100vh - 5rem);
+            margin-top: -3rem;
+            max-width: 600px;
+            object-fit: cover;
+        }
     }
 }
 
 .sign-in {
-    height: calc(100 - 8rem);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -28,6 +34,7 @@
 }
 
 .sign-in-header {
+    margin-bottom: 2rem;
 
     &__main {
         color: $primary;

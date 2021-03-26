@@ -40,14 +40,12 @@ export default function Resources({token}) {
     let sortedData = []
 
     if(data){
-        console.log(data, loading, error);
         data.allQuestions.map(data => {
             sortedData.push(data)
             return
         })
 
         sortedData.sort((a,b) => b.question.date-a.question.date);
-        console.log("This is the sorted data -if any",sortedData);
     }
 
     return (
