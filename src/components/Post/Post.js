@@ -70,7 +70,14 @@ export default function Post({post, token}) {
                             <div className="replies" key={index}>
                                  <div className="post__header">
                                     <FakePictureGenerator userId={answer.creator._id} name={(answer.creator.guide ? "post__image post__image--guide" : "post__image")}/>
-                                    <p className="post__poster">{answer.creator.name}</p>
+                                    <p onClick={()=>{
+                                        history.push({
+                                            pathname:`/profile`,
+                                            state: {
+                                                userId: answer.creator._id
+                                            }
+                                        })
+                                    }} className="post__poster replies__poster">{answer.creator.name}</p>
                                     <p>{timeConverter(Number(answer.date))}</p>
                                 </div>
                                 <p>{answer.content}</p>

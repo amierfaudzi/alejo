@@ -88,7 +88,7 @@ export default function Resources({token}) {
             </div>
             <div>
                 {token ? 
-                <PostForm/>
+                <PostForm user={token.user}/>
                 :
                 ''
                 }

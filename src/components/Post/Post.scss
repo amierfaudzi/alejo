@@ -51,12 +51,20 @@
 }
 
 .button--reply {
-    align-self: flex-end;
+    margin-bottom: 1rem;
 }
 
 .replies {
     padding: 1rem;
     background-color: gainsboro;
+
+    &__poster {
+        cursor: pointer;
+    }
+
+    &__poster:hover {
+        text-decoration: underline;
+    }
 }
 .replies:first-child {
     margin-top: 2rem;
