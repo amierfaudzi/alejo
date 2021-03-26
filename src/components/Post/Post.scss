@@ -21,6 +21,7 @@
     &__header {
         display: flex;
         align-items: center;
+        margin-bottom: 1rem;
     }
 
     &__poster {
@@ -54,7 +55,7 @@
 }
 
 .replies {
-    padding: 1rem 0;
+    padding: 1rem;
     background-color: gainsboro;
 }
 .replies:first-child {

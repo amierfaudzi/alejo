@@ -32,7 +32,6 @@ export default function Post({post, token}) {
         <div className="post">
             <div className="post__wrapper">
                 <div className="post__header">
-                    {/* <img src="http://placekitten.com/48/48" alt="" className={post.question.creator.guide ? "post__image post__image--guide" : "post__image"}/> */}
                     <FakePictureGenerator userId={post.question.creator._id} name={(post.question.creator.guide ? "post__image post__image--guide" : "post__image")}/>
                         <p className="post__poster">{post.question.creator.name}</p>
                         <p>{timeConverter(Number(post.question.date))}</p>
@@ -69,6 +68,11 @@ export default function Post({post, token}) {
                     {post.answers.map((answer, index)=> {
                         return (
                             <div className="replies" key={index}>
+                                 <div className="post__header">
+                                    <FakePictureGenerator userId={answer.creator._id} name={(answer.creator.guide ? "post__image post__image--guide" : "post__image")}/>
+                                    <p className="post__poster">{answer.creator.name}</p>
+                                    <p>{timeConverter(Number(answer.date))}</p>
+                                </div>
                                 <p>{answer.content}</p>
                             </div>
                         )
