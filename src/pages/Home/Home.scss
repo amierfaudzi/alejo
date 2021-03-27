@@ -146,4 +146,8 @@
 
 .button {
     @include btn;
+
+    &--initial {
+        width: fit-content;
+    }
 }

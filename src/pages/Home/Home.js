@@ -18,7 +18,7 @@ export default function Home() {
                     <p className="hero__content-description">Connect with professional guides and get access to useful resources that will give you up to date information on all you need to do to make settling in easy.</p>
                     <button onClick={()=>{
                             history.push('/signup')
-                        }} className="button">Join Community</button>
+                        }} className="button button--initial">Join Community</button>
                 </div>
                 <div>
                     <img className="hero__image" src={HomePic} alt=""/>
